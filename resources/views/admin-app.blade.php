@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title inertia>{{ config('app.name', 'ZeroPlus') }}</title>
+        <title inertia>{{ config('app.name', 'Admin|Zero Plus') }}</title>
 
         <!-- Scripts -->
         @routes

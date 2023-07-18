@@ -1,15 +1,7 @@
 <script setup>
-import { Head, Link, useForm } from '@inertiajs/vue3';
-import AuthenticationCard from '@/Components/AuthenticationCard.vue';
-import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-import Checkbox from '@/Components/Checkbox.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import { Head, useForm } from '@inertiajs/vue3';
 
 defineProps({
-    canResetPassword: Boolean,
     status: String,
 });
 
@@ -32,59 +24,53 @@ const submit = () => {
 <template>
     <Head title="Log in" />
 
-    <AuthenticationCard>
-        <template #logo>
-            <AuthenticationCardLogo />
-        </template>
-
+    <div>
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
-                <TextInput
-                    id="email"
-                    v-model="form.email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-                <InputError class="mt-2" :message="form.errors.email" />
+        <div id="login-wrap">
+            <div class="login-box">
+                <div class="login-header">
+                    <div class="logo">
+                        <h2>Right Academy</h2>
+                        <h3 class="fw-500">Welcome back! login</h3>
+                    </div>
+                </div>
+                <div class="login-body">
+                    <form action="">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bx bx-user"></i>
+                                </div>
+                                <input type="text" name="username" placeholder="Email or username" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    <i class="bx bxs-key"></i>
+                                </div>
+                                <input type="password" name="password" placeholder="********" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-rem-pass">
+                            <label>
+                                <input type="checkbox" name="remember_me">
+                                <span>Remember Me</span>
+                            </label>
+                            <a href="">Forgot Password</a>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="login-footer text-center">
+                    <p>Can't access your account? <a href="#">Contact Us</a></p>
+                </div>
             </div>
-
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-                <TextInput
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="current-password"
-                />
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Forgot your password?
-                </Link>
-
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </PrimaryButton>
-            </div>
-        </form>
-    </AuthenticationCard>
+        </div>
+    </div>
 </template>

@@ -1,22 +1,96 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import Welcome from '@/Components/Welcome.vue';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import { Head, useForm } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <Head title="Dashboard" />
+
+    <AuthenticatedLayout title="Dashboard">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
+            <h5>Dashboard</h5>
         </template>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <Welcome />
+        <div class="box">
+            <div class="box-header">
+                <div class="box-title">
+                    <h4>User list: Students</h4>
+                </div>
+                <div class="box-action">
+                    <ul>
+                        <li>
+                            <a href="" class="btn btn-rounded btn-sm btn-outline-primary">
+                                <i class="bx bx-search-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="btn btn-rounded btn-sm btn-outline-warning">
+                                <i class="bx bx-filter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="btn btn-rounded btn-sm btn-outline-info">
+                                <i class="bx bx-cloud-download"></i>
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
             </div>
+            <div class="box-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input">
+                            </div>
+                        </th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Role</th>
+                        <th>Created at/by</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="item in 100">
+                        <td>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input">
+                            </div>
+                        </td>
+                        <td>Md. Bellal Hossain</td>
+                        <td>belal13</td>
+                        <td>belalkhan.dev@gmail.com</td>
+                        <td>01798673163</td>
+                        <td>Active</td>
+                        <td>Student</td>
+                        <td>Mar 01, 22 / Belal</td>
+                        <td>
+                            <div class="action">
+                                <ul>
+                                    <li>
+                                        <a href="" class="btn btn-sm btn-rounded btn-outline-success"><i class="bx bx-show-alt"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn btn-sm btn-rounded btn-outline-warning"><i class="bx bx-edit"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn btn-sm btn-rounded btn-outline-danger"><i class="bx bx-trash"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </AppLayout>
+
+    </AuthenticatedLayout>
 </template>
