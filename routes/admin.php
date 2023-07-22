@@ -12,9 +12,10 @@ use Inertia\Inertia;
 */
 
 Route::get('/login', [LoginController::class, 'login'])->name('admin.login');
+Route::post('/login', [LoginController::class, 'store'])->name('admin.login.submit');
 
 Route::middleware([
-    'auth:sanctum',
+    'auth',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {

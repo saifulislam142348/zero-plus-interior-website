@@ -1,4 +1,7 @@
 <script setup>
+import Checkbox from '@/Components/Checkbox.vue';
+import TextInput from '@/Components/TextInput.vue';
+import InputError from '@/Components/InputError.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 
 defineProps({
@@ -15,7 +18,7 @@ const submit = () => {
     form.transform(data => ({
         ...data,
         remember: form.remember ? 'on' : '',
-    })).post(route('login'), {
+    })).post(route('admin.login.submit'), {
         onFinish: () => form.reset('password'),
     });
 };
@@ -33,37 +36,40 @@ const submit = () => {
             <div class="login-box">
                 <div class="login-header">
                     <div class="logo">
-                        <h2>Right Academy</h2>
+                        <h2>Zero Plus</h2>
                         <h3 class="fw-500">Welcome back! login</h3>
                     </div>
                 </div>
                 <div class="login-body">
-                    <form action="">
+                    <form @submit.prevent="submit">
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-text">
                                     <i class="bx bx-user"></i>
                                 </div>
-                                <input type="text" name="username" placeholder="Email or username" class="form-control">
+                                <TextInput id="email" type="text" class="form-control" v-model="form.email" autofocus autocomplete="username" placeholder="test@example.com" />
                             </div>
+                            <InputError class="mt-2" :message="form.errors.email" />
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-text">
                                     <i class="bx bxs-key"></i>
                                 </div>
-                                <input type="password" name="password" placeholder="********" class="form-control">
+                                <TextInput id="password" type="password" class="form-control" v-model="form.password" placeholder="*******" autocomplete="current-password" />
                             </div>
+                            <InputError class="mt-2" :message="form.errors.password" />
                         </div>
                         <div class="form-rem-pass">
                             <label>
-                                <input type="checkbox" name="remember_me">
+                                <Checkbox name="remember" v-model:checked="form.remember" />
                                 <span>Remember Me</span>
                             </label>
-                            <a href="">Forgot Password</a>
                         </div>
                         <div class="form-submit">
-                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                            <button class="btn btn-primary w-100 text-center" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                Log in
+                            </button>
                         </div>
                     </form>
                 </div>
