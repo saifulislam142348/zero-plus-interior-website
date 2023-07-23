@@ -2,8 +2,8 @@ import 'bootstrap'
 import 'boxicons'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'boxicons/css/boxicons.min.css'
-import '@/assets/scss/style.scss'
 import '../css/app.css';
+import '@/assets/scss/style.scss'
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';

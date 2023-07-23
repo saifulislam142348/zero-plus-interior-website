@@ -1,5 +1,5 @@
 <script setup>
-import AdminPanelLayout from "../Layouts/AdminPanelLayout.vue";
+import AdminPanelLayout from "@/Layouts/AdminPanelLayout.vue";
 import { Head } from "@inertiajs/vue3";
 
 </script>

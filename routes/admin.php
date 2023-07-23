@@ -19,7 +19,7 @@ Route::get('register', function (){
    return redirect(route('login'));
 });
 
-Route::prefix('admin')->group(function () {
+Route::middleware('guest')->prefix('admin')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 });
