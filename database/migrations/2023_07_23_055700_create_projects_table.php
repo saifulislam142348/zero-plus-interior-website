@@ -24,7 +24,6 @@ return new class extends Migration
             $table->date('project_end_date')->nullable();
             $table->enum('project_status', \App\Enums\ProjectStatuses::values())->default(\App\Enums\ProjectStatuses::PENDING->value);
             $table->foreignId('thumbnail_id')->nullable()->constrained('media')->cascadeOnDelete();
-            $table->
             $table->timestamps();
         });
     }
