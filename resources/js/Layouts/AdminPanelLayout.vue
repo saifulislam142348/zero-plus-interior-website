@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar.vue";
 import {Head} from "@inertiajs/vue3";
 
 defineProps({
-    title: String
+    title: String,
 });
 
 </script>

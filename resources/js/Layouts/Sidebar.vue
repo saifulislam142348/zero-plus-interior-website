@@ -1,13 +1,24 @@
+<script setup>
+import NavLink from "@/Components/NavLink.vue";
+
+const getActivePath = (routeName) => {
+    const url = new URL(routeName)
+    return url.pathname
+}
+</script>
+
 <template>
     <aside class="sidebar">
         <div class="sidebar-items">
             <div class="sidebar-item">
                 <div class="sidebar-item-body">
                     <ul>
-                        <li><a href="">
-                            <i class="bx bx-tachometer"></i>
-                            Dashboard
-                        </a></li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('dashboard')) }">
+                            <NavLink :href="route('dashboard')">
+                                <i class="bx bx-tachometer"></i>
+                                Dashboard
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -36,10 +47,18 @@
                 </div>
                 <div class="sidebar-item-body">
                     <ul>
-                        <li><a href="">Categories</a></li>
-                        <li><a href="">Partners</a></li>
-                        <li><a href="">Clients</a></li>
-                        <li><a href="">Leaders</a></li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('category.index')) }">
+                            <NavLink :href="route('category.index')">Categories</NavLink>
+                        </li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('partner.index')) }">
+                            <NavLink :href="route('partner.index')">Partners</NavLink>
+                        </li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('client.index')) }">
+                            <NavLink :href="route('client.index')">Clients</NavLink>
+                        </li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('leader.index')) }">
+                            <NavLink :href="route('leader.index')">Leaders</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -75,11 +94,6 @@
 
     </aside>
 </template>
-
-<script setup>
-
-</script>
-
 
 <style scoped>
 

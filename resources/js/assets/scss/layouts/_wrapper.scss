@@ -55,6 +55,7 @@
                         li {
                             position: relative;
                             padding-left: 15px;
+                            margin-bottom: 2px;
 
                             a {
                                 color: $color-gray-dark2;
@@ -71,8 +72,8 @@
                             &::after {
                                 position: absolute;
                                 top: 50%;
-                                left: 0px;
-                                width: 4px;
+                                left: 0;
+                                width: 0;
                                 height: 100%;
                                 background-color: $color-gray-light;
                                 content: '';
@@ -81,17 +82,26 @@
                             }
 
 
-                            &:hover {
+                            &.active, &:hover {
                                 background-color: $color-primary-bg-light;
+                                transition: 250ms;
+
                                 &::after {
                                     background-color: $color-primary;
-                                    transition: 0.5s;
+                                    transition: 250ms;
                                     visibility: visible;
+                                    width: 4px;
                                 }
 
                                 a {
                                     color: $color-primary;
                                     transition: 0.25s;
+                                }
+                            }
+
+                            &.active {
+                                &::after {
+                                    width: 0;
                                 }
                             }
                         }
