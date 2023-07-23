@@ -14,4 +14,17 @@ class CategoryRepository extends Repository
     {
         return Category::class;
     }
+
+    public function getByPaginate($limit = 15)
+    {
+        return $this->query()->latest()->paginate($limit);
+    }
+
+    public function storeByRequest($request)
+    {
+        return $this->query()->create([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+    }
 }

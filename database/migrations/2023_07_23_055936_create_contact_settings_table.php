@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('contact_settings', function (Blueprint $table) {
             $table->id();
+            $table->string('ref')->nullable()->unique();
             $table->string('phone')->nullable();
             $table->string('alternative_phone')->nullable();
             $table->string('email')->nullable();

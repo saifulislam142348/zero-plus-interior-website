@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('leaders', function (Blueprint $table) {
             $table->id();
+            $table->string('ref')->nullable()->unique();
             $table->string('name');
             $table->string('designation');
             $table->text('description')->nullable();

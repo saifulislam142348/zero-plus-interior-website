@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('social_media', function (Blueprint $table) {
             $table->id();
+            $table->string('ref')->nullable()->unique();
             $table->enum('type', \App\Enums\SocialMediaTypes::values());
             $table->string('link');
             $table->timestamps();
