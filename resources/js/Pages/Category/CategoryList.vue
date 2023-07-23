@@ -68,6 +68,7 @@ const deleteCategory = (category_id) => {
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Ref</th>
                             <th>Name</th>
                             <th>Description</th>
                             <th></th>
@@ -76,6 +77,7 @@ const deleteCategory = (category_id) => {
                     <tbody>
                         <tr v-for="category in categories.data">
                             <td>{{ category.id }}</td>
+                            <td>{{ category.ref }}</td>
                             <td>{{ category.name }}</td>
                             <td>{{ category.description }}</td>
                             <td>
