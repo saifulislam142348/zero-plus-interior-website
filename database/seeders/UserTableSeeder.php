@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserRoles;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,6 +21,7 @@ class UserTableSeeder extends Seeder
             'name' => 'Zeroplus Admin',
             'email' => 'admin@zeroplus.com',
             'password' => Hash::make('secret'),
+            'role' => UserRoles::SUPER_ADMIN->value
         ]);
     }
 }
