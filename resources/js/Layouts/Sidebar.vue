@@ -2,49 +2,72 @@
     <aside class="sidebar">
         <div class="sidebar-items">
             <div class="sidebar-item">
-                <div class="sidebar-item-header">
-                        <span class="icon">
-                            <i class="bx bx-group"></i>
-                        </span>
-                    <h4>Configurations</h4>
-                </div>
                 <div class="sidebar-item-body">
                     <ul>
-                        <li><a href="">Add new user</a></li>
-                        <li><a href="">Students list</a></li>
-                        <li><a href="">Parents list</a></li>
-                        <li><a href="">Teacher & Staff list</a></li>
-                        <li><a href="">Inactive Users list</a></li>
-                        <li><a href="">Black list users</a></li>
+                        <li><a href="">
+                            <i class="bx bx-tachometer"></i>
+                            Dashboard
+                        </a></li>
                     </ul>
                 </div>
             </div>
             <div class="sidebar-item">
                 <div class="sidebar-item-header">
                         <span class="icon">
-                            <i class="bx bx-lock"></i>
+                            <i class="bx bx-analyse"></i>
                         </span>
-                    <h4>Roles & Permissions</h4>
+                    <h4>Project & Services</h4>
                 </div>
                 <div class="sidebar-item-body">
                     <ul>
-                        <li><a href="">Add new role</a></li>
-                        <li><a href="">Role list</a></li>
-                        <li><a href="">Manage Permissions</a></li>
+                        <li><a href="">Add project</a></li>
+                        <li><a href="">Projects list</a></li>
+                        <li><a href="">Add service</a></li>
+                        <li><a href="">Service list</a></li>
                     </ul>
                 </div>
             </div>
             <div class="sidebar-item">
                 <div class="sidebar-item-header">
                         <span class="icon">
-                            <i class="bx bx-lock"></i>
+                            <i class="bx bx-archive"></i>
                         </span>
-                    <h4>System Controls</h4>
+                    <h4>Configuration</h4>
                 </div>
                 <div class="sidebar-item-body">
                     <ul>
-                        <li><a href="">All modules</a></li>
-                        <li><a href="">Assign to role</a></li>
+                        <li><a href="">Categories</a></li>
+                        <li><a href="">Partners</a></li>
+                        <li><a href="">Clients</a></li>
+                        <li><a href="">Leaders</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <div class="sidebar-item-header">
+                        <span class="icon">
+                            <i class="bx bxs-inbox"></i>
+                        </span>
+                    <h4>Contact & Settings</h4>
+                </div>
+                <div class="sidebar-item-body">
+                    <ul>
+                        <li><a href="">Contacts</a></li>
+                        <li><a href="">Contact settings</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-item">
+                <div class="sidebar-item-header">
+                        <span class="icon">
+                            <i class="bx bx-cog"></i>
+                        </span>
+                    <h4>Users & Settings</h4>
+                </div>
+                <div class="sidebar-item-body">
+                    <ul>
+                        <li><a href="">Users</a></li>
+                        <li><a href="">Site settings</a></li>
                     </ul>
                 </div>
             </div>

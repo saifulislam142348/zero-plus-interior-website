@@ -8,9 +8,7 @@ import { Head } from "@inertiajs/vue3";
     <Head title="Dashboard" />
 
     <AdminPanelLayout title="Dashboard">
-        <template #header>
-            <h5>Dashboard</h5>
-        </template>
+        <template #header>Dashboard</template>
 
         <div class="box">
             <div class="box-header">
@@ -48,29 +46,23 @@ import { Head } from "@inertiajs/vue3";
                             </div>
                         </th>
                         <th>Name</th>
-                        <th>Username</th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Status</th>
-                        <th>Role</th>
-                        <th>Created at/by</th>
-                        <th>Action</th>
+                        <th class="text-center">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr v-for="item in 9">
                         <td>
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input">
                             </div>
                         </td>
                         <td>Md. Bellal Hossain</td>
-                        <td>belal13</td>
                         <td>belalkhan.dev@gmail.com</td>
-                        <td>01798673163</td>
-                        <td>Active</td>
+                        <td>0179867316{{ item }}</td>
                         <td>Student</td>
-                        <td>Mar 01, 22 / Belal</td>
                         <td>
                             <div class="action">
                                 <ul>

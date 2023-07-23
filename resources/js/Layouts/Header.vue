@@ -15,7 +15,7 @@
         </div>
         <div class="header-navs">
             <div class="page-title">
-                <slot name="header"/>
+                <h5><slot name="header"/></h5>
             </div>
             <div class="nav-items">
                 <div class="nav-item">
