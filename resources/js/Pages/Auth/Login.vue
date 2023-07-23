@@ -27,7 +27,7 @@ const submit = () => {
             <div class="login-header">
                 <div class="logo">
                     <h2>Zero Plus</h2>
-                    <h3 class="fw-500">Welcome back! login</h3>
+                    <h3 class="fw-500">Admin Login</h3>
                 </div>
             </div>
             <div class="login-body">
@@ -37,14 +37,7 @@ const submit = () => {
                             <div class="input-group-text">
                                 <i class="bx bx-user"></i>
                             </div>
-                            <TextInput
-                                id="email"
-                                v-model="form.email"
-                                type="email"
-                                class="form-control"
-                                autofocus
-                                autocomplete="username"
-                            />
+                            <TextInput id="email" v-model="form.email" type="email" placeholder="ex: admin@zeroplus.com" class="form-control" autofocus autocomplete="username"/>
                         </div>
                         <InputError class="mt-2" :message="form.errors.email" />
                     </div>
@@ -53,12 +46,7 @@ const submit = () => {
                             <div class="input-group-text">
                                 <i class="bx bxs-key"></i>
                             </div>
-                            <TextInput
-                                id="password"
-                                v-model="form.password"
-                                type="password"
-                                autocomplete="current-password"
-                            />
+                            <TextInput id="password" v-model="form.password" type="password" autocomplete="current-password" placeholder="********"/>
                         </div>
                         <InputError class="mt-2" :message="form.errors.password" />
                     </div>
@@ -67,7 +55,6 @@ const submit = () => {
                             <Checkbox v-model:checked="form.remember" name="remember" />
                             <span>Remember Me</span>
                         </label>
-                        <a href="">Forgot Password</a>
                     </div>
                     <div class="form-submit">
                         <button type="submit" class="btn btn-primary w-100" :disabled="form.processing">Login</button>

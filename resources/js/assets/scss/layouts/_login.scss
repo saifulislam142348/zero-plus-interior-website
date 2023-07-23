@@ -12,7 +12,7 @@
         padding: 50px;
         border-radius: 10px;
         width: 480px;
-        box-shadow: 0px 3px 10px 0px #00000015;
+        box-shadow: 0px 5px 10px -7px #00000015;
 
         @media screen and (max-width: 480px) {
             width: 80%;
@@ -55,12 +55,12 @@
                     .input-group-text {
                         border: none;
                         background: none;
-                        background-color: #F5F3FF;
+                        background-color: #FFFFFF;
                         color: $color-primary;
                     }
 
                     .form-control {
-                        background-color: #F5F3FF;
+                        background-color: #FFFFFF;
 
                         &:focus {
                             box-shadow: none;
