@@ -17,6 +17,20 @@ class PartnerController extends Controller
 
     public function index()
     {
-        return Inertia::render('Partner/PartnerList');
+        $partners = $this->partnerRepository->getByPaginate();
+
+        return Inertia::render('Partner/PartnerList', [
+            'partners' => $partners
+        ]);
+    }
+
+    public function create()
+    {
+        return Inertia::render('Partner/PartnerCreate');
+    }
+
+    public function store(Request $request)
+    {
+
     }
 }

@@ -22,6 +22,20 @@ abstract class Repository
         return $this->model()::query();
     }
 
+    public function getByPaginate($limit = 15)
+    {
+        return $this->query()
+            ->latest()
+            ->paginate($limit);
+    }
+
+    public function getLatestByPaginate($limit = 15)
+    {
+        return $this->query()
+            ->latest()
+            ->paginate($limit);
+    }
+
     /**
      * @return Builder|Model|object|null
      */

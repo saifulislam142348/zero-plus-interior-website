@@ -14,4 +14,12 @@ class PartnerRepository extends Repository
     {
         return Partner::class;
     }
+
+    public function getByPaginate($limit = 15)
+    {
+        return $this->query()
+            ->with('media')
+            ->latest()
+            ->paginate($limit);
+    }
 }

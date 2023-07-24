@@ -25,6 +25,11 @@
         &::placeholder {
             font-weight: 300;
         }
+
+        &.input-file {
+            width: 100%;
+            background: none;
+        }
     }
 
     span.text-danger {
