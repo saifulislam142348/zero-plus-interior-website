@@ -17,8 +17,13 @@ class Partner extends Model
         'description'
     ];
 
-    public function media()
+    public function scopeOfRef($query, $ref)
     {
-        $this->morphOne(Media::class, 'mediable');
+        return $query->where('ref', $ref);
+    }
+
+    public function logo()
+    {
+        return $this->morphOne(Media::class, 'mediable');
     }
 }

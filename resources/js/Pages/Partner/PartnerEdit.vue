@@ -5,7 +5,14 @@ import NavLink from "../../Components/NavLink.vue";
 import { ref } from 'vue';
 import InputError from "../../Components/InputError.vue";
 
-const previewImage = ref(null);
+const props = defineProps({
+    partner: {
+        type: Object,
+        default: () => ({})
+    }
+});
+
+const previewImage = ref(props.partner.logo && props.partner.logo.src ? props.partner.logo.src : null);
 
 const onFileChange = (event) => {
     const file = event.target.files[0];
@@ -21,19 +28,21 @@ const onFileChange = (event) => {
 }
 
 const form = useForm({
-    name: '',
-    email: '',
-    phone: '',
-    description: '',
+    name: props.partner.name,
+    email: props.partner.email,
+    phone: props.partner.phone,
+    description: props.partner.description,
     logo: ''
 });
 
-const createPartner = () => {
-    form.post(route('partner.create'), {
+const updatePartner = () => {
+    form.put(route('partner.edit', props.partner.ref), {
         preserveScroll: true,
         onSuccess: () => {
-            form.reset();
-            previewImage.value = null
+            Toast.fire({
+                icon: 'success',
+                title: 'Partner update successfully'
+            });
         }
     })
 }
@@ -46,7 +55,7 @@ const createPartner = () => {
         <template #header>Partners</template>
         <div class="box">
             <div class="box-header">
-                <h5 class="title">Create partner</h5>
+                <h5 class="title">Edit partner</h5>
                 <div class="action">
                     <NavLink :href="route('partner.index')" class="btn btn-sm btn-outline-primary">Partner list</NavLink>
                 </div>
@@ -54,7 +63,7 @@ const createPartner = () => {
             <div class="box-body pb-4">
                 <div class="row">
                     <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-                        <form @submit.prevent="createPartner">
+                        <form @submit.prevent="updatePartner">
                             <div class="form-group">
                                 <label for="">Name</label>
                                 <input type="text" v-model="form.name" class="form-control" placeholder="partner name">
@@ -90,7 +99,7 @@ const createPartner = () => {
                                 </div>
                             </div>
                             <div class="form-group mt-4 d-flex justify-content-end align-items-center">
-                                <button type="submit" class="btn-primary btn" :disabled="form.processing">Save</button>
+                                <button type="submit" class="btn-primary btn" :disabled="form.processing">Save changes</button>
                             </div>
                         </form>
                     </div>

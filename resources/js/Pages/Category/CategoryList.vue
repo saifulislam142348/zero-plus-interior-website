@@ -45,7 +45,7 @@ const deleteCategory = (category_id) => {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            form.delete(route('category.delete.delete', category_id))
+            form.delete(route('category.delete', category_id))
         }
     })
 }

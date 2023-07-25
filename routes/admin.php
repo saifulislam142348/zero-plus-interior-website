@@ -37,8 +37,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('category.index');
         Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
         Route::post('/create', [CategoryController::class, 'store']);
-        Route::get('/{category_id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
-        Route::put('/{category_id}/edit', [CategoryController::class, 'update']);
+        Route::get('/{categoryRef}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+        Route::put('/{categoryRef}/edit', [CategoryController::class, 'update']);
         Route::delete('/{categoryId}', [CategoryController::class, 'destroy'])->name('category.delete');
     });
 
@@ -46,8 +46,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/', [PartnerController::class, 'index'])->name('partner.index');
         Route::get('/create', [PartnerController::class, 'create'])->name('partner.create');
         Route::post('/create', [PartnerController::class, 'store']);
-        Route::get('/{partner_id}/edit', [PartnerController::class, 'edit'])->name('partner.edit');
-        Route::put('/{partner_id}/edit', [PartnerController::class, 'update']);
+        Route::get('/{partnerRef}/edit', [PartnerController::class, 'edit'])->name('partner.edit');
+        Route::put('/{partnerRef}/edit', [PartnerController::class, 'update']);
         Route::delete('/{partnerId}', [PartnerController::class, 'destroy'])->name('partner.delete');
     });
 
