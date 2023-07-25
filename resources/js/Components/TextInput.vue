@@ -24,5 +24,5 @@ defineExpose({ focus: () => input.value.focus() });
         class="form-control"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
-    >
+    />
 </template>
