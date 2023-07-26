@@ -1,5 +1,5 @@
 <script setup>
-import {Head, Link} from "@inertiajs/vue3";
+import {Head, Link, useForm} from "@inertiajs/vue3";
 import AdminPanelLayout from "@/Layouts/AdminPanelLayout.vue";
 import NavLink from "../../Components/NavLink.vue";
 import Pagination from "../../Components/Pagination.vue";
@@ -10,6 +10,8 @@ const props = defineProps({
         default: () => ({})
     }
 });
+
+const form = useForm({});
 
 const deleteAction = (partnerRef) => {
     Swal.fire({
@@ -22,7 +24,16 @@ const deleteAction = (partnerRef) => {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            form.delete(route('partner.delete', partnerRef))
+            form.delete(route('partner.delete', partnerRef), {
+                onSuccess: () => {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Deleted!',
+                        text: "Partner has been deleted successfully"
+                    });
+                }
+            })
+
         }
     })
 }

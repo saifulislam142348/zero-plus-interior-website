@@ -88,7 +88,7 @@ const updatePartner = () => {
                                 <div class="file-upload-group">
                                     <div>
                                         <label>Partner logo</label>
-                                        <input type="file" @change="onFileChange" class="form-control input-file">
+                                        <input type="file" @change="onFileChange" @input="form.logo = $event.target.files[0]" class="form-control input-file">
                                     </div>
                                     <div class="preview-images" v-if="previewImage">
                                         <div class="image">

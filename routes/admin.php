@@ -66,7 +66,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('/create', [LeaderController::class, 'store']);
         Route::get('/{leader_id}/edit', [LeaderController::class, 'edit'])->name('leader.edit');
         Route::put('/{leader_id}/edit', [LeaderController::class, 'update']);
-        Route::delete('/{leaderId}', [LeaderController::class, 'destroy'])->name('partner.delete');
+        Route::delete('/{leaderId}', [LeaderController::class, 'destroy'])->name('leader.delete');
 
     });
 

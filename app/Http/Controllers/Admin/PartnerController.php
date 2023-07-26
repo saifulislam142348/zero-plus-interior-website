@@ -59,13 +59,14 @@ class PartnerController extends Controller
 
     public function update(Request $request, $partnerRef)
     {
-        $partner = $this->partnerRepository->getByPartnerRef($partnerRef);
-
         $request->validate([
             'name' => ['required'],
             'email' => ['nullable', 'email'],
             'logo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ]);
+
+
+        $partner = $this->partnerRepository->getByPartnerRef($partnerRef);
 
         $this->partnerRepository->updateByRequest($request, $partner->id);
 

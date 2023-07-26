@@ -24,6 +24,6 @@ class Partner extends Model
 
     public function logo()
     {
-        return $this->morphOne(Media::class, 'mediable');
+        return $this->morphOne(Media::class, 'mediable')->latest();
     }
 }
