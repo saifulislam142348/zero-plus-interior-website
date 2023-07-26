@@ -36,7 +36,7 @@ const form = useForm({
 });
 
 const updatePartner = () => {
-    form.put(route('partner.edit', props.partner.ref), {
+    form.post(route('partner.edit', props.partner.ref), {
         preserveScroll: true,
         onSuccess: () => {
             Toast.fire({
@@ -88,7 +88,7 @@ const updatePartner = () => {
                                 <div class="file-upload-group">
                                     <div>
                                         <label>Partner logo</label>
-                                        <input type="file" @change="onFileChange" class="form-control input-file" @input="form.logo = $event.target.files[0]">
+                                        <input type="file" @change="onFileChange" class="form-control input-file">
                                     </div>
                                     <div class="preview-images" v-if="previewImage">
                                         <div class="image">

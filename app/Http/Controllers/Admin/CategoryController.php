@@ -35,4 +35,25 @@ class CategoryController extends Controller
 
         return to_route('category.index');
     }
+
+    public function update(Request $request, $categoryRef)
+    {
+        $category = $this->categoryRepository->query()->ofRef($categoryRef)->firstOrFail();
+
+        $request->validate([
+            'name' => ['required', 'min:3', 'unique:categories,name,'.$category->id]
+        ]);
+
+        $this->categoryRepository->updateByRequest($request, $categoryRef);
+
+        return to_route('category.index');
+    }
+
+    public function destroy($categoryRef)
+    {
+        $category = $this->categoryRepository->query()->ofRef($categoryRef)->firstOrFail();
+        $category->delete();
+
+        return to_route('category.index');
+    }
 }

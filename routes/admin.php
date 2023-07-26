@@ -39,7 +39,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('/create', [CategoryController::class, 'store']);
         Route::get('/{categoryRef}/edit', [CategoryController::class, 'edit'])->name('category.edit');
         Route::put('/{categoryRef}/edit', [CategoryController::class, 'update']);
-        Route::delete('/{categoryId}', [CategoryController::class, 'destroy'])->name('category.delete');
+        Route::delete('/{categoryRef}', [CategoryController::class, 'destroy'])->name('category.delete');
     });
 
     Route::prefix('partners')->group(function () {
@@ -47,8 +47,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/create', [PartnerController::class, 'create'])->name('partner.create');
         Route::post('/create', [PartnerController::class, 'store']);
         Route::get('/{partnerRef}/edit', [PartnerController::class, 'edit'])->name('partner.edit');
-        Route::put('/{partnerRef}/edit', [PartnerController::class, 'update']);
-        Route::delete('/{partnerId}', [PartnerController::class, 'destroy'])->name('partner.delete');
+        Route::post('/{partnerRef}/edit', [PartnerController::class, 'update']);
+        Route::delete('/{partnerRef}', [PartnerController::class, 'destroy'])->name('partner.delete');
     });
 
     Route::prefix('clients')->group(function () {

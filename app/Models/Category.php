@@ -13,4 +13,9 @@ class Category extends Model
         'name',
         'description'
     ];
+
+    public function scopeOfRef($query, $ref)
+    {
+        return $query->where('ref', $ref);
+    }
 }

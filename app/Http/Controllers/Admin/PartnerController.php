@@ -79,4 +79,17 @@ class PartnerController extends Controller
 
         return to_route('partner.edit', $partnerRef);
     }
+
+    public function destroy($partnerRef)
+    {
+        $partner = $this->partnerRepository->getByPartnerRef($partnerRef);
+
+        if ($partner->logo) {
+            $this->mediaRepository->deleteByMediable($partner);
+        }
+
+        $partner->delete();
+
+        return to_route('partner.index');
+    }
 }

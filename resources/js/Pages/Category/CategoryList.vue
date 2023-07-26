@@ -18,34 +18,67 @@ const props = defineProps({
 const displayCategoryModal = ref(false);
 
 const showCategoryModal = () => {
+    form.reset();
     displayCategoryModal.value = !displayCategoryModal.value
 }
 
 const form = useForm({
+    category_ref: '',
     name: '',
     description: ''
 })
 
-const createCategory = () => {
-    form.transform(data => ({
-        ...data
-    })).post(route('category.create'), {
-        onSuccess: () => form.reset(),
-    });
+const submitCategory = () => {
+    if (!form.category_ref) {
+        form.transform(data => ({
+            ...data
+        })).post(route('category.create'), {
+            onSuccess: () => form.reset(),
+        });
+    } else {
+        form.transform(data => ({
+            ...data
+        })).put(route('category.edit', form.category_ref), {
+            onSuccess: () => {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Category update successfully'
+                });
+
+                displayCategoryModal.value = false
+            }
+        });
+    }
 }
 
-const deleteCategory = (category_id) => {
+const editCategory = (category) => {
+    form.category_ref = category.ref;
+    form.name = category.name;
+    form.description = category.description;
+
+    displayCategoryModal.value = true
+}
+
+
+const deleteCategory = (category_ref) => {
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#6d28d9',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#0284c7',
+        cancelButtonColor: '#DC2626',
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            form.delete(route('category.delete', category_id))
+            form.delete(route('category.delete', category_ref), {
+                onSuccess: () => {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Category has been deleted successfully'
+                    });
+                }
+            })
         }
     })
 }
@@ -75,8 +108,8 @@ const deleteCategory = (category_id) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="category in categories.data">
-                            <td>{{ category.id }}</td>
+                        <tr v-for="(category, i) in categories.data">
+                            <td>{{ i+1 }}</td>
                             <td>{{ category.ref }}</td>
                             <td>{{ category.name }}</td>
                             <td>{{ category.description }}</td>
@@ -84,10 +117,10 @@ const deleteCategory = (category_id) => {
                                 <div class="action">
                                     <ul>
                                         <li>
-                                            <Link :href="route('category.edit', category.id)" class="btn btn-sm btn-rounded btn-outline-warning"><i class="bx bx-edit"></i></Link>
+                                            <button @click="editCategory(category)" class="btn btn-sm btn-rounded btn-outline-warning"><i class="bx bx-edit"></i></button>
                                         </li>
                                         <li>
-                                            <button @click="deleteCategory(category.id)" class="btn btn-sm btn-rounded btn-outline-danger"><i class="bx bx-trash"></i></button>
+                                            <button @click="deleteCategory(category.ref)" class="btn btn-sm btn-rounded btn-outline-danger"><i class="bx bx-trash"></i></button>
                                         </li>
                                     </ul>
                                 </div>
@@ -103,11 +136,11 @@ const deleteCategory = (category_id) => {
 
         <DialogModal :show="displayCategoryModal"  @close="displayCategoryModal = false">
             <template #title>
-                Add Category
+                {{ form.category_ref ? 'Edit' : 'Add' }} Category
             </template>
 
             <template #content>
-                <form @submit.prevent="submit">
+                <form @submit.prevent="submitCategory">
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" class="form-control" v-model="form.name" placeholder="category name">
@@ -122,7 +155,7 @@ const deleteCategory = (category_id) => {
 
             <template #footer>
                 <SecondaryButton @click="displayCategoryModal = false">Cancel</SecondaryButton>
-                <PrimaryButton @click="createCategory" class="ml-3">Save</PrimaryButton>
+                <PrimaryButton @click="submitCategory" class="ml-3">{{ form.category_ref ? 'Update' : 'Save' }}</PrimaryButton>
             </template>
         </DialogModal>
 

@@ -11,7 +11,7 @@ const props = defineProps({
     }
 });
 
-const deleteAction = (partner_id) => {
+const deleteAction = (partnerRef) => {
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -22,7 +22,7 @@ const deleteAction = (partner_id) => {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            form.delete(route('partner.delete', partner_id))
+            form.delete(route('partner.delete', partnerRef))
         }
     })
 }
@@ -70,7 +70,7 @@ const deleteAction = (partner_id) => {
                                             <Link :href="route('partner.edit', partner.ref)" class="btn btn-sm btn-rounded btn-outline-primary"><i class="bx bx-edit"></i></Link>
                                         </li>
                                         <li>
-                                            <button @click="deleteAction(partner.id)" class="btn btn-sm btn-rounded btn-outline-danger"><i class="bx bx-trash"></i></button>
+                                            <button @click="deleteAction(partner.ref)" class="btn btn-sm btn-rounded btn-outline-danger"><i class="bx bx-trash"></i></button>
                                         </li>
                                     </ul>
                                 </div>
