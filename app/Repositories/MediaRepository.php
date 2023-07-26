@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Media;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class MediaRepository extends Repository
@@ -56,6 +57,23 @@ class MediaRepository extends Repository
 
     public function getByMediable($mediable)
     {
-        return $this->query()->where('mediable_id', $mediable->id)->where('mediable_type', get_class($mediable))->first();
+        return $this->query()
+            ->where('mediable_id', $mediable->id)
+            ->where('mediable_type', get_class($mediable))
+            ->first();
+    }
+
+    public function deleteByMediable($mediable)
+    {
+        $media = $this->query()
+            ->where('mediable_id', $mediable->id)
+            ->where('mediable_type', get_class($mediable))
+            ->first();
+
+        if ($media) {
+            Storage::delete($media->src);
+        }
+
+        return $media->delete();
     }
 }

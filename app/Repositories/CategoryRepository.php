@@ -27,4 +27,16 @@ class CategoryRepository extends Repository
             'description' => $request->description
         ]);
     }
+
+    public function updateByRequest($request, $categoryRef)
+    {
+        return $this->query()
+            ->ofRef($categoryRef)
+            ->firstOrFail()
+            ->update([
+                    'name' => $request->name,
+                    'description' => $request->description
+                ]
+            );
+    }
 }

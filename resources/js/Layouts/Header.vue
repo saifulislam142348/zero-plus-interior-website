@@ -18,15 +18,13 @@
                 <h5><slot name="header"/></h5>
             </div>
             <div class="nav-items">
-                <div class="nav-item">
+<!--                <div class="nav-item">
                     <span class="nav-icon" data-bs-toggle="tooltip" data-bs-placement="left" title="Unkown">
                         <i class='bx bxs-inbox' ></i>
                     </span>
-                </div>
-                <div class="nav-item">
-                    <span class="nav-icon" data-bs-toggle="tooltip" data-bs-placement="left" title="Notification">
-                        <i class='bx bx-bell' ></i>
-                    </span>
+                </div>-->
+                <div class="nav-item no-border">
+                    {{ $page.props.auth.user.name }}
                 </div>
                 <div class="nav-item">
                     <Dropdown align="right" width="48">

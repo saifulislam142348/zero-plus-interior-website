@@ -32,6 +32,29 @@
         }
     }
 
+    .file-upload-group {
+        .preview-images {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 10px;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .image {
+                width: 150px;
+                .filename {
+                    font-size: 0.775rem;
+                }
+                img {
+                    border: 1px solid $color-primary-light;
+                    padding: 3px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+
     span.text-danger {
         font-weight: 300;
         font-size: 0.875rem;
