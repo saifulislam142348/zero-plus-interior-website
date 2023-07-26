@@ -31,10 +31,18 @@ const getActivePath = (routeName) => {
                 </div>
                 <div class="sidebar-item-body">
                     <ul>
-                        <li><a href="">Add project</a></li>
-                        <li><a href="">Projects list</a></li>
-                        <li><a href="">Add service</a></li>
-                        <li><a href="">Service list</a></li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('project.create')) }">
+                            <NavLink :href="route('project.create')">Add project</NavLink>
+                        </li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('project.index')) }">
+                            <NavLink :href="route('project.index')">Project list</NavLink>
+                        </li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('service.create')) }">
+                            <NavLink :href="route('service.create')">Add service</NavLink>
+                        </li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('service.index')) }">
+                            <NavLink :href="route('service.index')">Service list</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
