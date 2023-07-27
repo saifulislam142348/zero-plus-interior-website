@@ -35,9 +35,18 @@ class ProjectController extends Controller
 
     public function create()
     {
-        $categories = $this->categoryRepository->query()->orderBy('name')->get();
-        $clients = $this->clientRepository->query()->orderBy('name')->get();
-        $partners = $this->partnerRepository->query()->orderBy('name')->get();
+        $categories = $this->categoryRepository->query()
+            ->select('id', 'name')
+            ->orderBy('name')
+            ->get();
+        $clients = $this->clientRepository->query()
+            ->select('id', 'name')
+            ->orderBy('name')
+            ->get();
+        $partners = $this->partnerRepository->query()
+            ->select('id', 'name')
+            ->orderBy('name')
+            ->get();
 
         return Inertia::render('Project/ProjectCreate', [
             'categories' => $categories,

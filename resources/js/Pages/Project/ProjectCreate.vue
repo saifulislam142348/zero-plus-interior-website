@@ -4,8 +4,21 @@ import AdminPanelLayout from "@/Layouts/AdminPanelLayout.vue";
 import NavLink from "../../Components/NavLink.vue";
 import { ref } from 'vue';
 import InputError from "../../Components/InputError.vue";
+import Editor from "@tinymce/tinymce-vue";
 
 const previewImage = ref(null);
+
+const props = defineProps({
+    categories: {
+        type: Array,
+    },
+    clients: {
+        type: Array,
+    },
+    partners: {
+        type: Array,
+    }
+})
 
 const onFileChange = (event) => {
     const file = event.target.files[0];
@@ -21,11 +34,14 @@ const onFileChange = (event) => {
 }
 
 const form = useForm({
-    name: '',
+    category_id: '',
+    client_id: '',
+    partner_id: '',
     email: '',
     phone: '',
     address: '',
-    photo: ''
+    thumbnail: '',
+    description: ''
 });
 
 const createProject = () => {
@@ -56,37 +72,72 @@ const createProject = () => {
                     <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                         <form @submit.prevent="createProject">
                             <div class="form-group">
-                                <label for="">Name</label>
-                                <input type="text" v-model="form.name" class="form-control" placeholder="project name">
-                                <InputError class="mt-2" :message="form.errors.name" />
+                                <label for="">Category</label>
+                                <select v-model="form.category_id" class="form-control">
+                                    <option value="">Select category</option>
+                                    <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
+                                </select>
+                                <InputError class="mt-2" :message="form.errors.client_id" />
                             </div>
                             <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="email" v-model="form.email" class="form-control" placeholder="project email">
-                                <InputError class="mt-2" :message="form.errors.email" />
+                                <label for="">Client</label>
+                                <select v-model="form.client_id" class="form-control">
+                                    <option value="">Select client</option>
+                                    <option v-for="client in clients" :value="client.id">{{ client.name }}</option>
+                                </select>
+                                <InputError class="mt-2" :message="form.errors.client_id" />
                             </div>
                             <div class="form-group">
-                                <label for="">Phone</label>
+                                <label for="">Partner</label>
+                                <select v-model="form.client_id" class="form-control">
+                                    <option value="">Select partner</option>
+                                    <option v-for="partner in partners" :value="partner.id">{{ partner.name }}</option>
+                                </select>
+                                <InputError class="mt-2" :message="form.errors.partner_id" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Project title</label>
                                 <input type="text" v-model="form.phone" class="form-control" placeholder="project phone">
                                 <InputError class="mt-2" :message="form.errors.phone" />
                             </div>
                             <div class="form-group">
-                                <label for="">Project address</label>
+                                <label for="">Project location</label>
                                 <input type="text" v-model="form.address" class="form-control" placeholder="project address">
+                                <InputError class="mt-2" :message="form.errors.address" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Project Details</label>
+                                <Editor
+                                    api-key="0pkrrft4y03r3s7a5hnx51vj8p8yhzy2pzwfhdozv7ck5dkn"
+                                    :init="{
+                                         height: 500,
+                                         menubar: false,
+                                         plugins: [
+                                           'advlist autolink lists link image charmap print preview anchor',
+                                           'searchreplace visualblocks code fullscreen',
+                                           'insertdatetime media table paste code help wordcount'
+                                         ],
+                                         toolbar:
+                                           'undo redo | formatselect | bold italic backcolor | \
+                                           alignleft aligncenter alignright alignjustify | \
+                                           bullist numlist outdent indent | removeformat | help'
+                                       }"
+                                    v-model="form.description"
+                                />
                                 <InputError class="mt-2" :message="form.errors.address" />
                             </div>
                             <div class="form-group mt-4">
                                 <div class="file-upload-group">
                                     <div>
-                                        <label>Project photo</label>
-                                        <input type="file" @change="onFileChange" class="form-control input-file" @input="form.photo = $event.target.files[0]">
+                                        <label>Project thumbnail</label>
+                                        <input type="file" @change="onFileChange" class="form-control input-file" @input="form.thumbnail = $event.target.files[0]">
                                     </div>
                                     <div class="preview-images" v-if="previewImage">
                                         <div class="image">
                                             <img :src="previewImage">
                                         </div>
                                     </div>
-                                    <InputError class="mt-2" :message="form.errors.photo" />
+                                    <InputError class="mt-2" :message="form.errors.thumbnail" />
                                 </div>
                             </div>
                             <div class="form-group mt-4 d-flex justify-content-end align-items-center">
