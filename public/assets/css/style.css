@@ -44,7 +44,9 @@ img {
 }
 
 a {
-    text-decoration: none
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: var(--transition-medium);
 }
 
 .section-padding {
@@ -58,6 +60,8 @@ a {
 .page-title .title{
     font-size: 2rem;
     color: var(--dark-color);
+    max-width: 520px;
+    margin: 0 auto;
 }
 
 .page-title .sub-title{
@@ -86,13 +90,23 @@ a {
     z-index: 999;
 }
 
-.header {}
+.header-area.sticky-header {
+    position: fixed;
+    width: 100%;
+    background: var(--white-color);
+    box-shadow: 0 5px 10px -5px #00000026;
+    transition: var(--transition-slow);
+}
+
 .header .logo{
-    margin: 10px 0;
+    padding: 20px 0;
 }
 
 .header .logo a{
     color: var(--white-color);
+}
+.header-area.sticky-header .header .logo a{
+    color: var(--primary-color);
 }
 
 .menus {
@@ -105,8 +119,6 @@ a {
     align-items: center;
 }
 
-.menus ul li {}
-
 .menus ul li a{
     text-decoration: none;
     color: var(--white-color);
@@ -114,6 +126,10 @@ a {
     font-weight: 500;
     padding: 8px 18px;
     display: block;
+}
+
+.header-area.sticky-header .menus ul li a {
+    color: var(--dark-color)
 }
 
 .menus ul li a:hover {
@@ -126,6 +142,14 @@ a {
 }
 
 .menus ul li.has-btn:hover a {
+    color: var(--white-color);
+}
+
+.header-area.sticky-header .menus ul li a:hover {
+    color: var(--primary-color)
+}
+
+.header-area.sticky-header .menus ul li.has-btn:hover a {
     color: var(--white-color);
 }
 
@@ -346,7 +370,7 @@ a {
     content: '';
     padding: 40px;
     transform: translate(-50%, -50%);
-    opacity: 50%;
+    opacity: 40%;
     border-radius: 50%;
     transition: var(--transition-slow);
 }
@@ -387,4 +411,75 @@ a {
     margin: 10px 0;
     font-size: 1rem;
 }
+
+.portfolio {
+    margin-top: 80px;
+}
+
+.portfolio-items {
+    display: flex;
+    column-gap: 10px;
+    row-gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.portfolio-item {
+    width: calc(33% - 5px);
+}
+
+.text-right {
+    text-align: right;
+}
+
+.footer-bottom {
+    background: var(--dark-color);
+    color: var(--white-color);
+    font-weight: 300;
+    font-size: 0.925rem;
+    padding: 15px 0;
+}
+
+
+.page-title-section {
+    height: 300px;
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+}
+
+.page-title-section::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--dark-blue-color);
+    opacity: 50%;
+    content: '';
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.page-title-section .page-title-content {
+    height: 100%;
+}
+
+.page-title-section .page-title-content div {
+    margin-top: 30px;
+    color: var(--white-color)
+}
+
+.page-title-section .page-title-content div h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+
+
+
+
 

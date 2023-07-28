@@ -14,4 +14,24 @@ class FrontendController extends Controller
     {
         return view('index');
     }
+
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function servies()
+    {
+        return view('services');
+    }
+
+    public function partners()
+    {
+        return view('partners');
+    }
+
+    public function clients()
+    {
+        return view('clients');
+    }
 }
