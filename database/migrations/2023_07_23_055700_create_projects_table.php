@@ -20,10 +20,10 @@ return new class extends Migration
             $table->foreignId('customer_id')->nullable()->constrained('customers')->cascadeOnDelete();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('project_location')->nullable();
-            $table->date('project_start_date')->nullable();
-            $table->date('project_end_date')->nullable();
-            $table->enum('project_status', \App\Enums\ProjectStatuses::values())->default(\App\Enums\ProjectStatuses::PENDING->value);
+            $table->string('location')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->enum('status', \App\Enums\ProjectStatuses::values())->default(\App\Enums\ProjectStatuses::PENDING->value);
             $table->foreignId('thumbnail_id')->nullable()->constrained('media')->cascadeOnDelete();
             $table->timestamps();
         });

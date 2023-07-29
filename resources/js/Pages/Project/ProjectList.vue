@@ -57,22 +57,26 @@ const deleteAction = (projectRef) => {
                         <tr>
                             <th>#</th>
                             <th>Ref</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Photo</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Client</th>
+                            <th>Status</th>
+                            <th>Thumbnail</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(project, i) in projects.data">
                             <td>{{ ++i }}</td>
-                            <td>{{ project.ref }}</td>
-                            <td>{{ project.name }}</td>
-                            <td>{{ project.email }}</td>
-                            <td>{{ project.phone }}</td>
                             <td>
-                                <img v-if="project.photo" :src="project.photo.src" alt="" class="img-thumbnail w-12">
+                                <Link :href="route('project.show', project.ref)">{{ project.ref }}</Link>
+                            </td>
+                            <td>{{ project.title }}</td>
+                            <td>{{ project.category ? project.category.name : '' }}</td>
+                            <td>{{ project.customer ? project.customer.name : '' }}</td>
+                            <td><span :style="{ color: getStatusColor(project.status) }">{{ project.status.toUpperCase() }}</span></td>
+                            <td>
+                                <img v-if="project.thumbnail" :src="project.thumbnail.src" alt="" class="img-thumbnail w-12">
                             </td>
                             <td>
                                 <div class="action">

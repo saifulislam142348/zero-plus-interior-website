@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\ProjectStatuses;
 use App\Http\Controllers\Controller;
-use App\Models\Media;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ClientRepository;
 use App\Repositories\MediaRepository;
@@ -33,16 +33,27 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function show($projectRef)
+    {
+        $project = $this->projectRepository->getByProjectRef($projectRef);
+
+        return Inertia::render('Project/ProjectShow', [
+            'project' => $project
+        ]);
+    }
+
     public function create()
     {
         $categories = $this->categoryRepository->query()
             ->select('id', 'name')
             ->orderBy('name')
             ->get();
+
         $clients = $this->clientRepository->query()
             ->select('id', 'name')
             ->orderBy('name')
             ->get();
+
         $partners = $this->partnerRepository->query()
             ->select('id', 'name')
             ->orderBy('name')
@@ -51,58 +62,86 @@ class ProjectController extends Controller
         return Inertia::render('Project/ProjectCreate', [
             'categories' => $categories,
             'clients' => $clients,
-            'partners' => $partners
+            'partners' => $partners,
+            'statuses' => ProjectStatuses::values()
         ]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required'],
-            'email' => ['nullable', 'email'],
-            'photo' => ['required', 'mimes:jpg,jpeg,png', 'max:1024'],
+            'title' => ['required'],
+            'thumbnail' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ]);
 
-        $client = $this->projectRepository->storeByRequest($request);
+        $project = $this->projectRepository->storeByRequest($request);
 
-        if ($request->hasFile('photo')) {
-            $this->mediaRepository->uploadFile($request->photo, 'clients', $client);
+        if ($request->hasFile('thumbnail')) {
+            $media = $this->mediaRepository->uploadFile($request->thumbnail, 'projects', $project);
+            $project->thumbnail_id = $media->id;
+            $project->save();
         }
 
-        return to_route('client.create');
+        if ($request->partner_id) {
+            $project->partners()->attach([$request->partner_id]);
+        }
+
+        return to_route('project.create');
     }
 
     public function edit($projectRef)
     {
-        $client = $this->projectRepository->getByProjectRef($projectRef);
+        $project = $this->projectRepository->getByProjectRef($projectRef);
+
+        $categories = $this->categoryRepository->query()
+            ->select('id', 'name')
+            ->orderBy('name')
+            ->get();
+
+        $clients = $this->clientRepository->query()
+            ->select('id', 'name')
+            ->orderBy('name')
+            ->get();
+
+        $partners = $this->partnerRepository->query()
+            ->select('id', 'name')
+            ->orderBy('name')
+            ->get();
 
         return Inertia::render('Project/ProjectEdit', [
-            'client' => $client
+            'project' => $project,
+            'categories' => $categories,
+            'clients' => $clients,
+            'partners' => $partners,
+            'statuses' => ProjectStatuses::values()
         ]);
     }
 
     public function update(Request $request, $projectRef)
     {
         $request->validate([
-            'name' => ['required'],
-            'email' => ['nullable', 'email'],
-            'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+            'title' => ['required'],
+            'thumbnail' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ]);
 
+        $project = $this->projectRepository->updateByRequest($request, $projectRef);
 
-        $client = $this->projectRepository->getByProjectRef($projectRef);
+        if ($request->hasFile('thumbnail')) {
+            $media = $this->mediaRepository->uploadFile($request->thumbnail, 'projects', $project);
 
-        $this->projectRepository->updateByRequest($request, $client->id);
-
-        if ($request->hasFile('photo')) {
-            if ($client->photo) {
-                $this->mediaRepository->deleteByMediable($client);
+            if ($project->thumbnail_id) {
+                $this->mediaRepository->deleteByMediaId($project->thumbnail_id);
             }
 
-            $this->mediaRepository->uploadFile($request->photo, 'clients', $client);
+            $project->thumbnail_id = $media->id;
+            $project->save();
         }
 
-        return to_route('client.edit', $projectRef);
+        if ($request->partner_id) {
+            $project->partners()->attach([$request->partner_id]);
+        }
+
+        return to_route('project.edit', $projectRef);
     }
 
     public function destroy($projectRef)
@@ -118,7 +157,30 @@ class ProjectController extends Controller
         return to_route('client.index');
     }
 
+    public function uploadPhoto(Request $request, $projectRef)
+    {
+        $request->validate([
+            'photo' => 'required|mimes:jpeg,jpg,png,gif'
+        ]);
 
+        $project = $this->projectRepository->query()->ofRef($projectRef)->firstOrFail();
+
+        if ($request->hasFile('photo')) {
+            $this->mediaRepository->uploadFile($request->photo, 'projects', $project);
+        }
+
+        return to_route('project.show', $project->ref);
+    }
+
+    public function deletePhoto($photoId)
+    {
+        $media = $this->mediaRepository->query()->findOrFail($photoId);
+        $project = $this->projectRepository->query()->findOrFail($media->mediable_id);
+
+        $this->mediaRepository->deleteByMediaId($photoId);
+
+        return to_route('project.show', $project->ref);
+    }
 
 
 }

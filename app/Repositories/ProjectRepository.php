@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Project;
+use Carbon\Carbon;
 
 class ProjectRepository extends Repository
 {
@@ -18,38 +19,48 @@ class ProjectRepository extends Repository
     public function getByProjectRef($projectRef)
     {
         return $this->query()
-            ->with('photo')
+            ->with('thumbnail', 'category', 'customer', 'partners', 'photos')
             ->ofRef($projectRef)
             ->firstOrFail();
     }
 
     public function getByPaginate($limit = 15)
     {
-        return $this->query()
-            ->with('photo')
+        $query = $this->query()
+            ->with('thumbnail', 'category', 'customer')
             ->latest()
             ->paginate($limit);
+
+        return $query;
     }
 
     public function storeByRequest($request)
     {
         return $this->query()->create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
+            'category_id' => $request->category_id,
+            'customer_id' => $request->client_id,
+            'title' => $request->title,
+            'description' => $request->description,
+            'location' => $request->location,
+            'start_date' => $request->start_date ? Carbon::parse($request->start_date)->format('Y-m-d') : null,
+            'end_date' => $request->end_date ? Carbon::parse($request->end_date)->format('Y-m-d') : null,
+            'status' => $request->status,
         ]);
     }
 
     public function updateByRequest($request, $projectRef)
     {
-        return $this->query()
-            ->findOrFail($projectRef)
+        return $this->query()->ofRef($projectRef)
+            ->firstOrFail()
             ->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'address' => $request->address,
+                'category_id' => $request->category_id,
+                'customer_id' => $request->client_id,
+                'title' => $request->title,
+                'description' => $request->description,
+                'location' => $request->location,
+                'start_date' => $request->start_date ? Carbon::parse($request->start_date)->format('Y-m-d') : null,
+                'end_date' => $request->end_date ? Carbon::parse($request->end_date)->format('Y-m-d') : null,
+                'status' => $request->status,
             ]);
     }
 }

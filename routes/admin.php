@@ -72,12 +72,14 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::prefix('projects')->group(function () {
         Route::get('/', [ProjectController::class, 'index'])->name('project.index');
+        Route::get('/show/{projectRef}', [ProjectController::class, 'show'])->name('project.show');
         Route::get('/create', [ProjectController::class, 'create'])->name('project.create');
         Route::post('/create', [ProjectController::class, 'store']);
-        Route::get('/{project_id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
-        Route::put('/{project_id}/edit', [ProjectController::class, 'update']);
-        Route::delete('/{projectId}', [ProjectController::class, 'destroy'])->name('project.delete');
-
+        Route::get('/{projectRef}/edit', [ProjectController::class, 'edit'])->name('project.edit');
+        Route::post('/{projectRef}/edit', [ProjectController::class, 'update']);
+        Route::delete('/{projectRef}', [ProjectController::class, 'destroy'])->name('project.delete');
+        Route::post('/photo/upload/{projectRef}', [ProjectController::class, 'uploadPhoto'])->name('project.upload.photo');
+        Route::delete('/photo/delete/{photoId}', [ProjectController::class, 'deletePhoto'])->name('project.photo.delete');
     });
 
     Route::prefix('services')->group(function () {
