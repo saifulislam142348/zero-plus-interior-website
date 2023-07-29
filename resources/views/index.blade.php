@@ -23,7 +23,7 @@
                 <div class="col-lg-6 offset-lg-1">
                     <div class="page-title">
                         <h5 class="sub-title">About us</h5>
-                        <h2 class="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+                        <h2 class="title m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
                     </div>
                     <div class="about-content">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dolores doloribus expedita neque quibusdam voluptatum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, ea explicabo harum iure necessitatibus nemo neque nisi numquam perferendis provident quae quibusdam repellat repellendus rerum tempore velit vero. Accusamus consequuntur ea fuga mollitia nihil unde!</p>
@@ -180,6 +180,7 @@
         </div>
     </div>
 
+    {{--portfolios--}}
     <div class="project-areas section-padding">
         <div class="page-title text-center">
             <h4 class="sub-title">Portfolio</h4>
@@ -246,11 +247,96 @@
     </div>
 
     <div class="leaders-area section-padding">
-
+        <div class="page-title text-center justify-center align-items-center">
+            <h2 class="title">Meet the leaders</h2>
+            <p>We are team of telented Architect to make design solutions more precise, sustainable and user friendly.</p>
+        </div>
+        <div class="leaders">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="leader">
+                            <img src="{{ asset('assets/images/leader.png') }}" alt="">
+                            <div class="content">
+                                <p>Fahim Mahmud</p>
+                                <span>Principal Architect</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="leader">
+                            <img src="{{ asset('assets/images/leader.png') }}" alt="">
+                            <div class="content">
+                                <p>Fahim Mahmud</p>
+                                <span>Principal Architect</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="leader">
+                            <img src="{{ asset('assets/images/leader.png') }}" alt="">
+                            <div class="content">
+                                <p>Fahim Mahmud</p>
+                                <span>Principal Architect</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="leader">
+                            <img src="{{ asset('assets/images/leader.png') }}" alt="">
+                            <div class="content">
+                                <p>Fahim Mahmud</p>
+                                <span>Principal Architect</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="contact-us-area">
+    <div class="contact-us-area section-padding">
+        <div class="page-title text-center justify-center align-items-center">
+            <h2 class="title">Contact</h2>
+            <p>We are team of telented Architect to make design solutions more precise, sustainable and user friendly.</p>
+        </div>
 
+        <div class="contact-us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="contact-map">
+                            <div id="gmap">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116834.01522929687!2d90.33688153317368!3d23.78077167760906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1690608366162!5m2!1sen!2sbd" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="contact-form">
+                                <div class="contact-title text-center">
+                                    <h3>Get in Touch</h3>
+                                    <p class="mt-2">Call or Email us Regarding <br>s Question or Issues</p>
+                                </div>
+                                <form class="form-contact">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Full name" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Phone" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" placeholder="Email" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="" placeholder="Type your message...." class="form-control form-control-textarea bg-gray" rows="5"></textarea>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-sm">Send</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
