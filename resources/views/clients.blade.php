@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <section class="clients-area section-padding">
+    <section class="page clients-area section-padding">
         <div class="page-title justify-center align-items-center text-center">
             <h2 class="title">Our Satisfied Customers</h2>
             <p>Our top priority is delivering exceptional products and services to our valued customers. We take great pride in our ability to create meaningful relationships and provide an outstanding customer experience. Today, we are thrilled to highlight some of our happy customers.</p>

@@ -295,7 +295,7 @@
         </div>
     </div>
 
-    <div class="contact-us-area section-padding">
+    <div class="contact-us-area pt-80 pb-80">
         <div class="page-title text-center justify-center align-items-center">
             <h2 class="title">Contact</h2>
             <p>We are team of telented Architect to make design solutions more precise, sustainable and user friendly.</p>

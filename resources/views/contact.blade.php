@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="contact-us-area section-padding">
+    <div class="contact-us-area section-padding page">
         <div class="contact-items">
             <div class="container">
                 <div class="row">

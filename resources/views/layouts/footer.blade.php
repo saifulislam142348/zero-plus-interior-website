@@ -1,4 +1,4 @@
-<footer class="section-padding">
+<footer>
     <div class="footer-top" style="background-image: url('{{ asset('assets/images/dummy.jpg') }}')">
         <div class="container">
             <div class="row">

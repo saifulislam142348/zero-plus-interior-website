@@ -53,8 +53,7 @@
         </div>
     </div>
 
-    {{-- services --}}
-    <div class="service-area  section-padding">
+    <div class="service-area  pt-80 pb-100">
         <div class="page-title-area">
             <div class="container">
                 <div class="row">
@@ -90,7 +89,6 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-
                         <div class="service">
                             <img src="{{ asset('assets/images/service-img.png') }}" alt="">
                             <div class="service-caption">
