@@ -68,7 +68,7 @@
                                 </li>
                                 <li>
                                     <span><i class="bx bx-chevron-right"></i></span>
-                                    <a href="{{ route('home') }}">Contact Us</a>
+                                    <a href="{{ route('page.contact') }}">Contact Us</a>
                                 </li>
                             </ul>
                         </div>

@@ -18,7 +18,7 @@
                             <li><a href="{{ route('page.projects') }}">Projects</a></li>
                             <li><a href="{{ route('page.partners') }}">Partners</a></li>
                             <li><a href="{{ route('page.clients') }}">Clients</a></li>
-                            <li class="has-btn"><a href="{{ route('home') }}">Contact</a></li>
+                            <li class="has-btn"><a href="{{ route('page.contact') }}">Contact</a></li>
                         </ul>
                     </div>
                 </div>

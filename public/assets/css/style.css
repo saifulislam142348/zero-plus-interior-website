@@ -49,7 +49,7 @@ a {
 }
 
 .section-padding {
-    padding: 100px 0 0 0;
+    padding: 80px 0 0 0;
 }
 
 .page-title {
@@ -74,7 +74,7 @@ a {
 
 .page-title p{
     font-weight: 300;
-    max-width: 700px;
+    max-width: 750px;
     margin-top: 10px;
 }
 
@@ -464,7 +464,7 @@ a {
     top: 0;
     left: 0;
     background-color: var(--dark-blue-color);
-    opacity: 50%;
+    opacity: 65%;
     content: '';
     width: 100%;
     height: 100%;
@@ -477,7 +477,7 @@ a {
 
 .page-title-section .page-title-content div {
     margin-top: 30px;
-    color: var(--white-color)
+    color: var(--gray-light-color)
 }
 
 .page-title-section .page-title-content div h3 {
@@ -529,6 +529,12 @@ a {
     transform: translate(0, -50%);
     border-radius: 5px;
     padding: 20px 30px;
+}
+
+.contact-map .contact-form.contact-form-right {
+    left: auto;
+    right: 40px;
+    width: 450px;
 }
 
 .contact-form .contact-title {
@@ -653,4 +659,49 @@ a {
 
 .footer-contact li .icon {
     font-size: 1.5rem;
+}
+
+.clients {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 15px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.clients .client {
+    width: calc(20% - 12px);
+    box-shadow: 0 3px 10px -4px #00000026;
+    background: var(--white-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition-medium);
+}
+
+.clients .client:hover {
+    transform: scale(1.125);
+    transition: var(--transition-medium);
+    box-shadow: 0 5px 15px -5px #00000059;
+}
+
+.contact-items {
+    margin-bottom: 120px;
+}
+
+.contact-item {
+    border: 1px solid var(--primary-color);
+    padding-bottom: 20px;
+    border-radius: 0px 30px 0px 30px;
+}
+
+.contact-item span.title {
+    background: var(--primary-color);
+    color: white;
+    padding: 0px 18px;
+    display: inline-block;
+    margin-bottom: 24px;
+    border-radius: 0px 0px 15px 15px;
+    font-weight: 500;
 }

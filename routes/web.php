@@ -17,5 +17,6 @@ Route::get('/services', [FrontendController::class, 'servies'])->name('page.serv
 Route::get('/projects', [ProjectController::class, 'projects'])->name('page.projects');
 Route::get('/partners', [FrontendController::class, 'partners'])->name('page.partners');
 Route::get('/clients', [FrontendController::class, 'clients'])->name('page.clients');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('page.contact');
 
 require __DIR__ . '/admin.php';
