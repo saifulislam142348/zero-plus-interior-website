@@ -149,7 +149,7 @@
                     <p>{{ $siteSettingsData->copyright_text ?? 'Copyright © 2023. All rights reserved.' }}</p>
                 </div>
                 <div class="col-lg-6 text-right">
-                    <p>Design & Developed by <a href="http://ideasolutionbd.com" target="_blank">Idea Solution</a></p>
+                    <p>Developed by <a href="http://ideasolutionbd.com" target="_blank">Idea Solution</a></p>
                 </div>
             </div>
         </div>
