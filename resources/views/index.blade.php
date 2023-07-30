@@ -80,40 +80,22 @@
         <div class="services">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="service">
-                            <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            <div class="service-caption">
-                                <p>Building Design & Consultancy</p>
-                                <a href="">Read more</a>
+                    @foreach($services as $service)
+                        <div class="col-lg-4">
+                            <div class="service">
+                                <img src="{{ $service->photo->src }}" alt="">
+                                <div class="service-caption">
+                                    <p>{{ $service->title }}</p>
+                                    <a href="">Read more</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="service">
-                            <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            <div class="service-caption">
-                                <p>Interior design & build</p>
-                                <a href="">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-
-                        <div class="service">
-                            <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            <div class="service-caption">
-                                <p>Project management</p>
-                                <a href="">Read more</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 
-    {{-- how works--}}
     <div class="how-work-section" style="background-image: url('{{ asset('assets/images/dummy.jpg') }}')">
 
         <div class="container">
@@ -180,7 +162,6 @@
         </div>
     </div>
 
-    {{--portfolios--}}
     <div class="project-areas section-padding">
         <div class="page-title text-center">
             <h4 class="sub-title">Portfolio</h4>
@@ -190,51 +171,42 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="portfolio-items">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img src="{{ asset('assets/images/portfolio-1.png') }}" alt="">
-                                </a>
+                        <div class="grid">
+                            <div class="grid-item metal transition grid-item--width2">
+                                <img src="{{ asset('assets/images/dummy.jpg') }}" alt="">
                             </div>
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img src="{{ asset('assets/images/portfolio-1.png') }}" alt="">
-                                </a>
+                            <div class="grid-item transition">
+                                <img src="{{ asset('assets/images/service-img.png') }}" alt="">
                             </div>
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img src="{{ asset('assets/images/portfolio-1.png') }}" alt="">
-                                </a>
+                            <div class="grid-item metal">
+                                <img src="{{ asset('assets/images/client-img.png') }}" alt="">
                             </div>
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img src="{{ asset('assets/images/portfolio-1.png') }}" alt="">
-                                </a>
+                            <div class="grid-item transition">
+                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
                             </div>
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img src="{{ asset('assets/images/portfolio-1.png') }}" alt="">
-                                </a>
+                            <div class="grid-item another">
+                                <img src="{{ asset('assets/images/dummy.jpg') }}" alt="">
                             </div>
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img src="{{ asset('assets/images/portfolio-1.png') }}" alt="">
-                                </a>
+                            <div class="grid-item transition">
+                                <img src="{{ asset('assets/images/service-img.png') }}" alt="">
                             </div>
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img src="{{ asset('assets/images/portfolio-1.png') }}" alt="">
-                                </a>
+                            <div class="grid-item another">
+                                <img src="{{ asset('assets/images/client-img.png') }}" alt="">
                             </div>
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img src="{{ asset('assets/images/portfolio-1.png') }}" alt="">
-                                </a>
+                            <div class="grid-item metal">
+                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
                             </div>
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img src="{{ asset('assets/images/portfolio-1.png') }}" alt="">
-                                </a>
+                            <div class="grid-item another">
+                                <img src="{{ asset('assets/images/service-img.png') }}" alt="">
+                            </div>
+                            <div class="grid-item another grid-item--width2">
+                                <img src="{{ asset('assets/images/dummy.jpg') }}" alt="">
+                            </div>
+                            <div class="grid-item another metal">
+                                <img src="{{ asset('assets/images/client-img.png') }}" alt="">
+                            </div>
+                            <div class="grid-item another">
+                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -254,42 +226,17 @@
         <div class="leaders">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3">
-                        <div class="leader">
-                            <img src="{{ asset('assets/images/leader.png') }}" alt="">
-                            <div class="content">
-                                <p>Fahim Mahmud</p>
-                                <span>Principal Architect</span>
+                    @foreach($leaders as $leader)
+                        <div class="col-lg-3">
+                            <div class="leader">
+                                <img src="{{ $leader->photo->src }}" alt="">
+                                <div class="content">
+                                    <p>{{ $leader->name }}</p>
+                                    <span>{{ $leader->designation }}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="leader">
-                            <img src="{{ asset('assets/images/leader.png') }}" alt="">
-                            <div class="content">
-                                <p>Fahim Mahmud</p>
-                                <span>Principal Architect</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="leader">
-                            <img src="{{ asset('assets/images/leader.png') }}" alt="">
-                            <div class="content">
-                                <p>Fahim Mahmud</p>
-                                <span>Principal Architect</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="leader">
-                            <img src="{{ asset('assets/images/leader.png') }}" alt="">
-                            <div class="content">
-                                <p>Fahim Mahmud</p>
-                                <span>Principal Architect</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -314,18 +261,31 @@
                                     <h3>Get in Touch</h3>
                                     <p class="mt-2">Call or Email us Regarding <br>s Question or Issues</p>
                                 </div>
-                                <form class="form-contact">
+                                <form class="form-contact" action="{{ route('page.contact.store') }}" method="post">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="text" placeholder="Full name" class="form-control">
+                                        <input type="text" name="name" placeholder="Full name" class="form-control">
+                                        @error('name')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" placeholder="Phone" class="form-control">
+                                        <input type="text" name="phone" placeholder="Phone" class="form-control">
+                                        @error('phone')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" placeholder="Email" class="form-control">
+                                        <input type="email" name="email" placeholder="Email" class="form-control">
+                                        @error('email')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="" placeholder="Type your message...." class="form-control form-control-textarea bg-gray" rows="5"></textarea>
+                                        <textarea name="message" placeholder="Type your message...." class="form-control form-control-textarea bg-gray" rows="5"></textarea>
+                                        @error('message')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group text-center">
                                         <button type="submit" class="btn btn-sm">Send</button>
@@ -340,3 +300,42 @@
     </div>
 
 @endsection
+
+
+@push('footer-script')
+    <script src="{{ asset('assets/vendors/isotope/js/isotope.pkgd.min.js') }}"></script>
+
+    <script>
+        var $grid = $('.grid').isotope({
+            itemSelector: '.grid-item',
+            layoutMode: 'fitRows',
+        });
+
+        var isHorizontal = false;
+        var $window = $( window );
+
+        // filter functions
+        var filterFns = {
+            ium: function() {
+                var name = $(this).find('.name').text();
+                return name.match( /ium$/ );
+            }
+        };
+        // bind filter button click
+        $('.filters-button-group').on( 'click', 'button', function() {
+            var filterValue = $( this ).attr('data-filter');
+            // use filterFn if matches value
+            filterValue = filterFns[ filterValue ] || filterValue;
+            $grid.isotope({ filter: filterValue });
+        });
+        // change is-checked class on buttons
+        $('.button-group').each( function( i, buttonGroup ) {
+            var $buttonGroup = $( buttonGroup );
+            $buttonGroup.on( 'click', 'button', function() {
+                $buttonGroup.find('.is-checked').removeClass('is-checked');
+                $( this ).addClass('is-checked');
+            });
+        });
+    </script>
+
+@endpush

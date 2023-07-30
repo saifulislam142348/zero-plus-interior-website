@@ -10,6 +10,13 @@ class Contact extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'phone',
+        'email',
+        'message',
+    ];
+
     protected $appends = ['formatted_created_at'];
 
     public function getFormattedCreatedAtAttribute()

@@ -5,7 +5,11 @@
                 <div class="col-lg-4">
                     <div class="logo">
                         <a href="/">
-                            <h1>Zero Plus.</h1>
+                            @if($siteSettingsData->siteLogo)
+                                <img src="{{ $siteSettingsData->siteLogo->src }}" alt="">
+                            @else
+                                <h1>Zero Plus.</h1>
+                            @endif
                         </a>
                     </div>
                 </div>

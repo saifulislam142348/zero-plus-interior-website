@@ -10,7 +10,7 @@
                         <div class="contact-item text-center">
                             <span class="title">Address</span>
                             <div class="content text-center">
-                                <p>105/5/4 Nurjahan Road, Bloc-B Mohammadpur, Dhaka-1207</p>
+                                <p>{{ $contactSettingsData->address_line_1 ?? 'No address found' }}</p>
                             </div>
                         </div>
                     </div>
@@ -18,7 +18,8 @@
                         <div class="contact-item text-center">
                             <span class="title">Phone</span>
                             <div class="content text-center">
-                                <p>105/5/4 Nurjahan Road, Bloc-B Mohammadpur, Dhaka-1207</p>
+                                <p>{{ $contactSettingsData->phone ?? null }}</p>
+                                <p>{{ $contactSettingsData->alternative_phone ?? null }}</p>
                             </div>
                         </div>
                     </div>
@@ -26,7 +27,8 @@
                         <div class="contact-item text-center">
                             <span class="title">Email Us</span>
                             <div class="content text-center">
-                                <p>105/5/4 Nurjahan Road, Bloc-B Mohammadpur, Dhaka-1207</p>
+                                <p>{{ $contactSettingsData->email ?? null }}</p>
+                                <p>{{ $contactSettingsData->alternative_email ?? null }}</p>
                             </div>
                         </div>
                     </div>
@@ -46,18 +48,36 @@
                                     <h3>Get in Touch</h3>
                                     <p class="mt-2">Call or Email us Regarding <br>s Question or Issues</p>
                                 </div>
-                                <form class="form-contact">
+                                @if(session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                                <form class="form-contact" action="{{ route('page.contact.store') }}" method="post">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="text" placeholder="Full name" class="form-control">
+                                        <input type="text" name="name" placeholder="Full name" class="form-control">
+                                        @error('name')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" placeholder="Phone" class="form-control">
+                                        <input type="text" name="phone" placeholder="Phone" class="form-control">
+                                        @error('phone')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" placeholder="Email" class="form-control">
+                                        <input type="email" name="email" placeholder="Email" class="form-control">
+                                        @error('email')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="" placeholder="Type your message...." class="form-control form-control-textarea bg-gray" rows="5"></textarea>
+                                        <textarea name="message" placeholder="Type your message...." class="form-control form-control-textarea bg-gray" rows="5"></textarea>
+                                        @error('message')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group text-center">
                                         <button type="submit" class="btn btn-sm">Send</button>

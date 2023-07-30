@@ -1,3 +1,4 @@
+
 <footer>
     <div class="footer-top" style="background-image: url('{{ asset('assets/images/dummy.jpg') }}')">
         <div class="container">
@@ -6,39 +7,46 @@
                     <div class="footer-item">
                         <div class="footer-content">
                             <div class="logo">
-                                <img src="{{ asset('assets/images/footer-logo.png') }}" alt="">
+                                @if($siteSettingsData->footerLogo)
+                                    <img src="{{ $siteSettingsData->footerLogo->src }}" alt="Footer logo">
+                                @else
+                                    <img src="{{ asset('assets/images/footer-logo.png') }}" alt="">
+                                @endif
                             </div>
-                            <p>Zero Plus has been established as a platform to link up multiple disciplines of Building & Interior design and produce a one stop integrated solution.</p>
+                            <p>{{ $siteSettingsData->footer_summary ?? null }}</p>
 
-                            <div class="social-links">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <img src="{{ asset('assets/images/facebook.png') }}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="{{ asset('assets/images/facebook.png') }}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="{{ asset('assets/images/facebook.png') }}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="{{ asset('assets/images/facebook.png') }}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="{{ asset('assets/images/facebook.png') }}" alt="">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            @if(false)
+                                <div class="social-links">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endif'
+
                         </div>
                     </div>
 
@@ -81,26 +89,12 @@
                         </div>
                         <div class="footer-content">
                             <ul class="footer-links">
-                                <li>
-                                    <span><i class="bx bx-chevron-right"></i></span>
-                                    <a href="">Building</a>
-                                </li>
-                                <li>
-                                    <span><i class="bx bx-chevron-right"></i></span>
-                                    <a href="">Architect</a>
-                                </li>
-                                <li>
-                                    <span><i class="bx bx-chevron-right"></i></span>
-                                    <a href="">Projects</a>
-                                </li>
-                                <li>
-                                    <span><i class="bx bx-chevron-right"></i></span>
-                                    <a href="">Interior</a>
-                                </li>
-                                <li>
-                                    <span><i class="bx bx-chevron-right"></i></span>
-                                    <a href="">Exterior</a>
-                                </li>
+                                @foreach($categoriesData as $category)
+                                    <li>
+                                        <span><i class="bx bx-chevron-right"></i></span>
+                                        <a href="{{ route('page.projects') }}">{{ $category->name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -112,30 +106,38 @@
                         </div>
                         <div class="footer-content">
                             <ul class="footer-contact">
-                                <li>
-                                    <span class="icon">
-                                        <i class="bx bx-phone"></i>
-                                    </span>
-                                    +8801713856235
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <i class="bx bx-envelope"></i>
-                                    </span>
-                                    hello@zeroplushbd.com
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <i class='bx bx-map-alt'></i>
-                                    </span>
-                                    Mohammadia Housing Ltd. Mohammadpur, Dhaka-1207
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <i class="bx bx-time"></i>
-                                    </span>
-                                    10:00 am to 06:00 pm
-                                </li>
+                                @if($contactSettingsData->phone)
+                                    <li>
+                                        <span class="icon">
+                                            <i class="bx bx-phone"></i>
+                                        </span>
+                                        {{ $contactSettingsData->phone }}
+                                    </li>
+                                @endif
+                                @if($contactSettingsData->email)
+                                    <li>
+                                        <span class="icon">
+                                            <i class="bx bx-envelope"></i>
+                                        </span>
+                                        {{ $contactSettingsData->email }}
+                                    </li>
+                                @endif
+                                @if($contactSettingsData->address_line_1)
+                                    <li>
+                                        <span class="icon">
+                                            <i class='bx bx-map-alt'></i>
+                                        </span>
+                                        {{ $contactSettingsData->address_line_1 }}
+                                    </li>
+                                @endif
+                                @if($contactSettingsData->office_time)
+                                    <li>
+                                        <span class="icon">
+                                            <i class="bx bx-time"></i>
+                                        </span>
+                                        {{ $contactSettingsData->office_time }}
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -147,7 +149,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <p>Copyright &copy; All Rights Reserved by Zero Plus.</p>
+                    <p>{{ $siteSettingsData->copyright_text ?? null }}</p>
                 </div>
                 <div class="col-lg-6 text-right">
                     <p>Design & Developed by <a href="#">Innovetech Solution</a></p>

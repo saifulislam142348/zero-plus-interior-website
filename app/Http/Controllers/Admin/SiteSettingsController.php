@@ -19,11 +19,7 @@ class SiteSettingsController extends Controller
 
     public function index()
     {
-        $settings = $this->settingRepository->query()->with([
-            'logo',
-            'favicon',
-            'footerLogo'
-        ])->first();
+        $settings = $this->settingRepository->getSettings();
 
         return Inertia::render('SiteSettings', [
             'settings' => $settings

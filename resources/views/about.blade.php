@@ -70,33 +70,17 @@
         <div class="services">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="service">
-                            <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            <div class="service-caption">
-                                <p>Building Design & Consultancy</p>
-                                <a href="">Read more</a>
+                    @foreach($services as $service)
+                        <div class="col-lg-4">
+                            <div class="service">
+                                <img src="{{ $service->photo->src }}" alt="">
+                                <div class="service-caption">
+                                    <p>{{ $service->title }}</p>
+                                    <a href="">Read more</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="service">
-                            <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            <div class="service-caption">
-                                <p>Interior design & build</p>
-                                <a href="">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="service">
-                            <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            <div class="service-caption">
-                                <p>Project management</p>
-                                <a href="">Read more</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

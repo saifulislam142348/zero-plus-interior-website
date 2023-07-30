@@ -19,12 +19,12 @@ class SiteSetting extends Model
         'copyright_text'
     ];
 
-    public function logo()
+    public function siteLogo()
     {
         return $this->belongsTo(Media::class, 'logo', 'id');
     }
 
-    public function favicon()
+    public function siteFavicon()
     {
         return $this->belongsTo(Media::class, 'favicon', 'id');
     }

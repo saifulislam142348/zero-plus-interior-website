@@ -16,6 +16,16 @@ class SiteSettingRepository extends Repository
         return SiteSetting::class;
     }
 
+    public function getSettings()
+    {
+        return $this->query()
+            ->with([
+                'siteLogo',
+                'siteFavicon',
+                'footerLogo'
+            ])->first();
+    }
+
     public function savedByRequest($request)
     {
         $settings = $this->query()->first();

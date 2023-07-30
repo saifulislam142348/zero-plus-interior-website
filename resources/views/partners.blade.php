@@ -11,11 +11,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="clients mt-4">
-                        @for($i=1;$i <= 20; $i++)
-                            <div class="client">
-                                <img src="{{ asset('assets/images/client-img.png') }}" alt="">
-                            </div>
-                        @endfor
+                        @foreach($partners as $partner)
+                            @if($partner)
+                                <div class="client">
+                                    <img src="{{ $partner->photo->src }}" alt="">
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>

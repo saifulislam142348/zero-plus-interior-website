@@ -12,7 +12,7 @@ const props = defineProps({
 });
 
 
-const previewLogo = ref(props.settings && props.settings.logo ? props.settings.logo.src : null);
+const previewLogo = ref(props.settings && props.settings.site_logo ? props.settings.site_logo.src : null);
 const onLogoChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -26,7 +26,7 @@ const onLogoChange = (event) => {
     }
 }
 
-const previewFavicon = ref(props.settings && props.settings.favicon ? props.settings.favicon.src : null);
+const previewFavicon = ref(props.settings && props.settings.site_favicon ? props.settings.site_favicon.src : null);
 
 const onFaviconChange = (event) => {
     const file = event.target.files[0];

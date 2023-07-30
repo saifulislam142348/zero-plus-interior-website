@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
@@ -18,5 +19,6 @@ Route::get('/projects', [ProjectController::class, 'projects'])->name('page.proj
 Route::get('/partners', [FrontendController::class, 'partners'])->name('page.partners');
 Route::get('/clients', [FrontendController::class, 'clients'])->name('page.clients');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('page.contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('page.contact.store');
 
 require __DIR__ . '/admin.php';
