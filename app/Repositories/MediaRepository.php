@@ -87,4 +87,13 @@ class MediaRepository extends Repository
 
         return $media->delete();
     }
+
+    public function deleteAllByMediable($photos)
+    {
+        if ($photos->isNotEmpty()) {
+            foreach ($photos as $photo) {
+                $this->deleteByMediaId($photo->id);
+            }
+        }
+    }
 }

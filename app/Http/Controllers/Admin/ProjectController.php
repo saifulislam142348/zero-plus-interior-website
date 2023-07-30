@@ -124,7 +124,9 @@ class ProjectController extends Controller
             'thumbnail' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ]);
 
-        $project = $this->projectRepository->updateByRequest($request, $projectRef);
+        $project = $this->projectRepository->getByProjectRef($projectRef);
+
+        $this->projectRepository->updateByRequest($request, $projectRef);
 
         if ($request->hasFile('thumbnail')) {
             $media = $this->mediaRepository->uploadFile($request->thumbnail, 'projects', $project);
@@ -146,15 +148,13 @@ class ProjectController extends Controller
 
     public function destroy($projectRef)
     {
-        $client = $this->projectRepository->getByProjectRef($projectRef);
+        $project = $this->projectRepository->getByProjectRef($projectRef);
 
-        if ($client->photo) {
-            $this->mediaRepository->deleteByMediable($client);
-        }
+        $this->mediaRepository->deleteAllByMediable($project->photos);
 
-        $client->delete();
+        $project->delete();
 
-        return to_route('client.index');
+        return to_route('project.index');
     }
 
     public function uploadPhoto(Request $request, $projectRef)
@@ -181,6 +181,5 @@ class ProjectController extends Controller
 
         return to_route('project.show', $project->ref);
     }
-
 
 }

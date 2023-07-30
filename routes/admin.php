@@ -64,9 +64,9 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/', [LeaderController::class, 'index'])->name('leader.index');
         Route::get('/create', [LeaderController::class, 'create'])->name('leader.create');
         Route::post('/create', [LeaderController::class, 'store']);
-        Route::get('/{leader_id}/edit', [LeaderController::class, 'edit'])->name('leader.edit');
-        Route::put('/{leader_id}/edit', [LeaderController::class, 'update']);
-        Route::delete('/{leaderId}', [LeaderController::class, 'destroy'])->name('leader.delete');
+        Route::get('/{leaderRef}/edit', [LeaderController::class, 'edit'])->name('leader.edit');
+        Route::post('/{leaderRef}/edit', [LeaderController::class, 'update']);
+        Route::delete('/{leaderRef}', [LeaderController::class, 'destroy'])->name('leader.delete');
 
     });
 
