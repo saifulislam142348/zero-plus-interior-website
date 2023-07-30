@@ -7,10 +7,9 @@
     <header>
         <div class="apps">
             <div class="app-icon">
-                <img src="@/assets/images/menus.svg" alt="">
             </div>
             <div class="app-brand">
-                <h3>Zero Plus</h3>
+                <h2>Zero Plus .</h2>
             </div>
         </div>
         <div class="header-navs">
