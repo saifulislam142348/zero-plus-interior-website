@@ -2,19 +2,10 @@
 
 @section('content')
 
-    <div class="hero-area">
-        <div class="hero-items">
-            <div class="hero-item" style="background-image: url('{{ asset('assets/images/dummy.jpg') }}')">
-                <div class="hero-content text-center">
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium.</h2>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('components.hero');
 
     @include('components.about-content')
 
-    {{-- services --}}
     <div class="service-area  section-padding">
         <div class="page-title-area">
             <div class="container">
@@ -38,7 +29,7 @@
                                 <img src="{{ $service->photo->src }}" alt="">
                                 <div class="service-caption">
                                     <p>{{ $service->title }}</p>
-                                    <a href="">Read more</a>
+                                    <a href="{{ route('page.services') }}">Read more</a>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +44,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="page-title page-title-dark text-center">
+                    <div class="page-title page-title-dark text-center pb-4">
                         <h4 class="sub-title">Our Process</h4>
                         <h2 class="title">How it Works</h2>
                     </div>
@@ -124,49 +115,21 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="grid">
-                            <div class="grid-item metal transition grid-item--width2">
-                                <img src="{{ asset('assets/images/dummy.jpg') }}" alt="">
-                            </div>
-                            <div class="grid-item transition">
-                                <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item metal">
-                                <img src="{{ asset('assets/images/client-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item transition">
-                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
-                            </div>
-                            <div class="grid-item another">
-                                <img src="{{ asset('assets/images/dummy.jpg') }}" alt="">
-                            </div>
-                            <div class="grid-item transition">
-                                <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item another">
-                                <img src="{{ asset('assets/images/client-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item metal">
-                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
-                            </div>
-                            <div class="grid-item another">
-                                <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item another grid-item--width2">
-                                <img src="{{ asset('assets/images/dummy.jpg') }}" alt="">
-                            </div>
-                            <div class="grid-item another metal">
-                                <img src="{{ asset('assets/images/client-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item another">
-                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
-                            </div>
+                            @foreach($projects as $project)
+                                <div class="grid-item {{ $project->category?->ref }}">
+                                    <a href="{{ route('page.projects.show', $project->ref) }}">
+                                        <img src="{{ $project->thumbnail->src }}" alt="">
+                                        <div class="caption">{{ $project->title }}</div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="{{ route('page.projects') }}" class="btn btn-primary btn-sm">Show All</a>
+            <a href="{{ route('page.projects') }}" class="btn btn-outline-primary text-uppercase btn-sm">Show All</a>
         </div>
     </div>
 

@@ -25,4 +25,13 @@ class ProjectController extends Controller
             'projects' => $projects
         ]);
     }
+
+    public function show($projectRef)
+    {
+        $project = $this->projectRepository->getByProjectRef($projectRef);
+
+        return view('project-show')->with([
+            'project' => $project
+        ]);
+    }
 }

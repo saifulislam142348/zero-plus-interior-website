@@ -16,6 +16,12 @@
                                 <div class="client">
                                     <img src="{{ $client->photo->src }}" alt="">
                                 </div>
+                                <div class="client">
+                                    <img src="{{ $client->photo->src }}" alt="">
+                                </div>
+                                <div class="client">
+                                    <img src="{{ $client->photo->src }}" alt="">
+                                </div>
                             @endif
                         @endforeach
                     </div>

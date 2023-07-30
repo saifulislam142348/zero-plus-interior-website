@@ -27,7 +27,7 @@ class FrontendController extends Controller
     {
         $leaders = $this->leaderRepository->query()->take(4)->get();
         $services = $this->serviceRepository->query()->take(3)->latest()->get();
-        $projects = $this->projectRepository->query()->take(15)->latest()->get();
+        $projects = $this->projectRepository->query()->inRandomOrder()->take(9)->get();
 
         return view('index', compact('leaders', 'services', 'projects'));
     }

@@ -16,8 +16,9 @@
                         <div class="grid">
                             @foreach($projects as $project)
                                 <div class="grid-item {{ $project->category?->ref }}">
-                                    <a href="#">
+                                    <a href="{{ route('page.projects.show', $project->ref) }}">
                                         <img src="{{ $project->thumbnail->src }}" alt="">
+                                        <div class="caption">{{ $project->title }}</div>
                                     </a>
                                 </div>
                             @endforeach
@@ -38,7 +39,6 @@
         var $grid = $('.grid').isotope({
             itemSelector: '.grid-item',
             layoutMode: 'fitRows',
-
         });
 
         var isHorizontal = false;
@@ -66,6 +66,7 @@
                 $( this ).addClass('is-checked');
             });
         });
+
     </script>
 
 @endpush

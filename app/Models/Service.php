@@ -27,6 +27,6 @@ class Service extends Model
 
     public function photos()
     {
-        return $this->morphMany(Media::class, 'mediable');
+        return $this->morphMany(Media::class, 'mediable')->whereNot('id', $this->photo?->id)->take(2)->latest();
     }
 }
