@@ -1,0 +1,147 @@
+<script setup>
+import {Head, Link, useForm} from "@inertiajs/vue3";
+import AdminPanelLayout from "@/Layouts/AdminPanelLayout.vue";
+import NavLink from "../../Components/NavLink.vue";
+import InputError from "@/Components/InputError.vue";
+import {ref} from "vue";
+
+const props = defineProps({
+    service: {
+        type: Object,
+        default: () => ({})
+    }
+});
+
+const form = useForm({});
+const previewImage = ref(null);
+
+const deleteAction = (photoId) => {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#0284c7',
+        cancelButtonColor: '#DC2626',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.delete(route('service.photo.delete', photoId), {
+                onSuccess: () => {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Deleted!',
+                        text: "Photo has been deleted successfully"
+                    });
+                }
+            })
+
+        }
+    })
+}
+
+const onFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            previewImage.value = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    } else {
+        previewImage.value = null
+    }
+}
+
+const uploadForm = useForm({
+    photo: '',
+});
+
+const submitPhoto = () => {
+    uploadForm.post(route('service.upload.photo', props.service.ref), {
+        preserveScroll: true,
+        onSuccess: () => {
+            uploadForm.reset();
+            previewImage.value = null;
+            Swal.fire(
+                'Congratulation',
+                'Service photo has been stored successfully',
+                'success'
+            )
+        }
+    })
+}
+
+
+</script>
+
+<template>
+    <Head title="Service" />
+    <AdminPanelLayout>
+        <template #header>Service Details</template>
+        <div class="box">
+            <div class="box-header">
+                <h5 class="title">Service: {{ service.title }}</h5>
+                <div class="action">
+                    <NavLink :href="route('service.index')" class="btn btn-sm btn-outline-primary">Service list</NavLink>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table">
+                    <tr>
+                        <th>Title</th>
+                        <td>{{ service.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td v-html="service.description"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="box-footer text-center">
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <h5 class="title">Service's photos</h5>
+            </div>
+            <div class="box-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 offset-lg-3">
+                            <form @submit.prevent="submitPhoto" class="bg-gray-50 p-3">
+                                <div class="form-group">
+                                    <div class="file-upload-group">
+                                        <div>
+                                            <input type="file" @change="onFileChange" class="form-control input-file" @input="uploadForm.photo = $event.target.files[0]">
+                                        </div>
+                                        <div class="preview-images" v-if="previewImage">
+                                            <div class="image">
+                                                <img :src="previewImage">
+                                            </div>
+                                        </div>
+                                        <InputError class="mt-2" :message="uploadForm.errors.photo" />
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-photos">
+                    <div class="photo" v-for="photo in service.photos">
+                        <img :src="photo.src" alt="" class="img-thumbnail">
+                        <div class="action">
+                            <button @click="deleteAction(photo.id)" class="btn btn-sm btn-rounded btn-outline-danger"><i class="bx bx-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </AdminPanelLayout>
+</template>
+
+<style scoped>
+
+</style>

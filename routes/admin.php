@@ -84,11 +84,14 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::prefix('services')->group(function () {
         Route::get('/', [ServiceController::class, 'index'])->name('service.index');
+        Route::get('/show/{serviceRef}', [ServiceController::class, 'show'])->name('service.show');
         Route::get('/create', [ServiceController::class, 'create'])->name('service.create');
         Route::post('/create', [ServiceController::class, 'store']);
-        Route::get('/{service_id}/edit', [ServiceController::class, 'edit'])->name('service.edit');
-        Route::put('/{service_id}/edit', [ServiceController::class, 'update']);
-        Route::delete('/{serviceId}', [ServiceController::class, 'destroy'])->name('service.delete');
+        Route::get('/{serviceRef}/edit', [ServiceController::class, 'edit'])->name('service.edit');
+        Route::post('/{serviceRef}/edit', [ServiceController::class, 'update']);
+        Route::delete('/{serviceRef}', [ServiceController::class, 'destroy'])->name('service.delete');
+        Route::post('/photo/upload/{ServiceRef}', [ServiceController::class, 'uploadPhoto'])->name('service.upload.photo');
+        Route::delete('/photo/delete/{photoId}', [ServiceController::class, 'deletePhoto'])->name('service.photo.delete');
     });
 
     Route::prefix('contacts')->group(function () {
