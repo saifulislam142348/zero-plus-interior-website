@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ContactSettingController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LeaderController;
@@ -102,6 +103,12 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::put('/{contact_id}/edit', [ContactController::class, 'update']);
         Route::delete('/{contactId}', [ContactController::class, 'destroy'])->name('contact.delete');
     });
+
+    Route::get('site-settings', [SiteSettingsController::class, 'index'])->name('site.settings');
+    Route::post('site-settings', [SiteSettingsController::class, 'store']);
+
+    Route::get('contact-settings', [ContactSettingController::class, 'index'])->name('contact.settings');
+    Route::post('contact-settings', [ContactSettingController::class, 'store']);
 
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');
 

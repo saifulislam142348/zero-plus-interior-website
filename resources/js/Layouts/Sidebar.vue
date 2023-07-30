@@ -80,7 +80,9 @@ const getActivePath = (routeName) => {
                 <div class="sidebar-item-body">
                     <ul>
                         <li><a href="">Contacts</a></li>
-                        <li><a href="">Contact settings</a></li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('contact.settings')) }">
+                            <NavLink :href="route('contact.settings')">Contact Settings</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -93,8 +95,9 @@ const getActivePath = (routeName) => {
                 </div>
                 <div class="sidebar-item-body">
                     <ul>
-                        <li><a href="">Users</a></li>
-                        <li><a href="">Site settings</a></li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('site.settings')) }">
+                            <NavLink :href="route('site.settings')">Site Settings</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
