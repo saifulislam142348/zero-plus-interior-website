@@ -5,7 +5,7 @@
                 <div class="col-lg-4">
                     <div class="logo">
                         <a href="/">
-                            @if($siteSettingsData->siteLogo)
+                            @if(isset($siteSettingsData->siteLogo))
                                 <img src="{{ $siteSettingsData->siteLogo->src }}" alt="">
                             @else
                                 <h1>Zero Plus.</h1>

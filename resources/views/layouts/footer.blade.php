@@ -7,8 +7,8 @@
                     <div class="footer-item">
                         <div class="footer-content">
                             <div class="logo">
-                                @if($siteSettingsData->footerLogo)
-                                    <img src="{{ $siteSettingsData->footerLogo->src }}" alt="Footer logo">
+                                @if(isset($siteSettingsData->footerLogo))
+                                    <img src="{{ $siteSettingsData->footerLogo->src ?? null }}" alt="Footer logo">
                                 @else
                                     <img src="{{ asset('assets/images/footer-logo.png') }}" alt="">
                                 @endif
@@ -106,7 +106,7 @@
                         </div>
                         <div class="footer-content">
                             <ul class="footer-contact">
-                                @if($contactSettingsData->phone)
+                                @if(isset($contactSettingsData->phone))
                                     <li>
                                         <span class="icon">
                                             <i class="bx bx-phone"></i>
@@ -114,7 +114,7 @@
                                         {{ $contactSettingsData->phone }}
                                     </li>
                                 @endif
-                                @if($contactSettingsData->email)
+                                @if(isset($contactSettingsData->email))
                                     <li>
                                         <span class="icon">
                                             <i class="bx bx-envelope"></i>
@@ -122,7 +122,7 @@
                                         {{ $contactSettingsData->email }}
                                     </li>
                                 @endif
-                                @if($contactSettingsData->address_line_1)
+                                @if(isset($contactSettingsData->address_line_1))
                                     <li>
                                         <span class="icon">
                                             <i class='bx bx-map-alt'></i>
@@ -130,7 +130,7 @@
                                         {{ $contactSettingsData->address_line_1 }}
                                     </li>
                                 @endif
-                                @if($contactSettingsData->office_time)
+                                @if(isset($contactSettingsData->office_time))
                                     <li>
                                         <span class="icon">
                                             <i class="bx bx-time"></i>
