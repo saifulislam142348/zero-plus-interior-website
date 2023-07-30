@@ -16,6 +16,16 @@ class ProjectRepository extends Repository
         return Project::class;
     }
 
+    public function getLatestProjects()
+    {
+        return $this->query()
+            ->select('id', 'ref', 'title', 'category_id', 'thumbnail_id')
+            ->with('category:id,ref,name', 'thumbnail')
+            ->latest()
+            ->take(30)
+            ->get();
+    }
+
     public function getByProjectRef($projectRef)
     {
         return $this->query()

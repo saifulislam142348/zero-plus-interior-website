@@ -6,49 +6,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="prorject-items">
+                    <div class="project-items">
                         <div class="button-group filters-button-group">
-                            <button class="button is-checked" data-filter="*">show all</button>
-                            <button class="button" data-filter=".metal">metal</button>
-                            <button class="button" data-filter=".transition">transition</button>
-                            <button class="button" data-filter=".another">transition</button>
+                            <button class="button is-checked" data-filter="*">Show all</button>
+                            @foreach($categories as $category)
+                                <button class="button" data-filter=".{{ $category->ref }}">{{ $category->name }}</button>
+                            @endforeach
                         </div>
                         <div class="grid">
-                            <div class="grid-item metal transition grid-item--width2">
-                                <img src="{{ asset('assets/images/dummy.jpg') }}" alt="">
-                            </div>
-                            <div class="grid-item transition">
-                                <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item metal">
-                                <img src="{{ asset('assets/images/client-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item transition">
-                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
-                            </div>
-                            <div class="grid-item another">
-                                <img src="{{ asset('assets/images/dummy.jpg') }}" alt="">
-                            </div>
-                            <div class="grid-item transition">
-                                <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item another">
-                                <img src="{{ asset('assets/images/client-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item metal">
-                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
-                            </div>
-                            <div class="grid-item another">
-                                <img src="{{ asset('assets/images/service-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item another grid-item--width2">
-                                <img src="{{ asset('assets/images/dummy.jpg') }}" alt="">
-                            </div>
-                            <div class="grid-item another metal">
-                                <img src="{{ asset('assets/images/client-img.png') }}" alt="">
-                            </div>
-                            <div class="grid-item another">
-                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                            @foreach($projects as $project)
+                                <div class="grid-item {{ $project->category?->ref }}">
+                                    <a href="#">
+                                        <img src="{{ $project->thumbnail->src }}" alt="">
+                                    </a>
+                                </div>
+                            @endforeach
                             </div>
                         </div>
                     </div>

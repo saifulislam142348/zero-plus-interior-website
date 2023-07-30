@@ -14,7 +14,7 @@
                         @foreach($partners as $partner)
                             @if($partner)
                                 <div class="client">
-                                    <img src="{{ $partner->photo->src }}" alt="">
+                                    <img src="{{ $partner->logo->src }}" alt="">
                                 </div>
                             @endif
                         @endforeach

@@ -22,6 +22,11 @@ abstract class Repository
         return $this->model()::query();
     }
 
+    public function getAll()
+    {
+        return $this->query()->get();
+    }
+
     public function getByPaginate($limit = 15)
     {
         return $this->query()
