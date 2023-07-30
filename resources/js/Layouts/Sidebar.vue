@@ -31,10 +31,18 @@ const getActivePath = (routeName) => {
                 </div>
                 <div class="sidebar-item-body">
                     <ul>
-                        <li><a href="">Add project</a></li>
-                        <li><a href="">Projects list</a></li>
-                        <li><a href="">Add service</a></li>
-                        <li><a href="">Service list</a></li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('project.create')) }">
+                            <NavLink :href="route('project.create')">Add project</NavLink>
+                        </li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('project.index')) }">
+                            <NavLink :href="route('project.index')">Project list</NavLink>
+                        </li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('service.create')) }">
+                            <NavLink :href="route('service.create')">Add service</NavLink>
+                        </li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('service.index')) }">
+                            <NavLink :href="route('service.index')">Service list</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -71,8 +79,12 @@ const getActivePath = (routeName) => {
                 </div>
                 <div class="sidebar-item-body">
                     <ul>
-                        <li><a href="">Contacts</a></li>
-                        <li><a href="">Contact settings</a></li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('contact.index')) }">
+                            <NavLink :href="route('contact.index')">Contacts</NavLink>
+                        </li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('contact.settings')) }">
+                            <NavLink :href="route('contact.settings')">Contact Settings</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -85,8 +97,9 @@ const getActivePath = (routeName) => {
                 </div>
                 <div class="sidebar-item-body">
                     <ul>
-                        <li><a href="">Users</a></li>
-                        <li><a href="">Site settings</a></li>
+                        <li :class="{ 'active': $page.url === getActivePath(route('site.settings')) }">
+                            <NavLink :href="route('site.settings')">Site Settings</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ContactSettingController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LeaderController;
@@ -64,39 +65,46 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/', [LeaderController::class, 'index'])->name('leader.index');
         Route::get('/create', [LeaderController::class, 'create'])->name('leader.create');
         Route::post('/create', [LeaderController::class, 'store']);
-        Route::get('/{leader_id}/edit', [LeaderController::class, 'edit'])->name('leader.edit');
-        Route::put('/{leader_id}/edit', [LeaderController::class, 'update']);
-        Route::delete('/{leaderId}', [LeaderController::class, 'destroy'])->name('leader.delete');
+        Route::get('/{leaderRef}/edit', [LeaderController::class, 'edit'])->name('leader.edit');
+        Route::post('/{leaderRef}/edit', [LeaderController::class, 'update']);
+        Route::delete('/{leaderRef}', [LeaderController::class, 'destroy'])->name('leader.delete');
 
     });
 
     Route::prefix('projects')->group(function () {
         Route::get('/', [ProjectController::class, 'index'])->name('project.index');
+        Route::get('/show/{projectRef}', [ProjectController::class, 'show'])->name('project.show');
         Route::get('/create', [ProjectController::class, 'create'])->name('project.create');
         Route::post('/create', [ProjectController::class, 'store']);
-        Route::get('/{project_id}/edit', [ProjectController::class, 'edit'])->name('project.edit');
-        Route::put('/{project_id}/edit', [ProjectController::class, 'update']);
-        Route::delete('/{projectId}', [ProjectController::class, 'destroy'])->name('project.delete');
-
+        Route::get('/{projectRef}/edit', [ProjectController::class, 'edit'])->name('project.edit');
+        Route::post('/{projectRef}/edit', [ProjectController::class, 'update']);
+        Route::delete('/{projectRef}', [ProjectController::class, 'destroy'])->name('project.delete');
+        Route::post('/photo/upload/{projectRef}', [ProjectController::class, 'uploadPhoto'])->name('project.upload.photo');
+        Route::delete('/photo/delete/{photoId}', [ProjectController::class, 'deletePhoto'])->name('project.photo.delete');
     });
 
     Route::prefix('services')->group(function () {
         Route::get('/', [ServiceController::class, 'index'])->name('service.index');
+        Route::get('/show/{serviceRef}', [ServiceController::class, 'show'])->name('service.show');
         Route::get('/create', [ServiceController::class, 'create'])->name('service.create');
         Route::post('/create', [ServiceController::class, 'store']);
-        Route::get('/{service_id}/edit', [ServiceController::class, 'edit'])->name('service.edit');
-        Route::put('/{service_id}/edit', [ServiceController::class, 'update']);
-        Route::delete('/{serviceId}', [ServiceController::class, 'destroy'])->name('service.delete');
+        Route::get('/{serviceRef}/edit', [ServiceController::class, 'edit'])->name('service.edit');
+        Route::post('/{serviceRef}/edit', [ServiceController::class, 'update']);
+        Route::delete('/{serviceRef}', [ServiceController::class, 'destroy'])->name('service.delete');
+        Route::post('/photo/upload/{ServiceRef}', [ServiceController::class, 'uploadPhoto'])->name('service.upload.photo');
+        Route::delete('/photo/delete/{photoId}', [ServiceController::class, 'deletePhoto'])->name('service.photo.delete');
     });
 
     Route::prefix('contacts')->group(function () {
         Route::get('/', [ContactController::class, 'index'])->name('contact.index');
-        Route::get('/create', [ContactController::class, 'create'])->name('contact.create');
-        Route::post('/create', [ContactController::class, 'store']);
-        Route::get('/{contact_id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
-        Route::put('/{contact_id}/edit', [ContactController::class, 'update']);
         Route::delete('/{contactId}', [ContactController::class, 'destroy'])->name('contact.delete');
     });
+
+    Route::get('site-settings', [SiteSettingsController::class, 'index'])->name('site.settings');
+    Route::post('site-settings', [SiteSettingsController::class, 'store']);
+
+    Route::get('contact-settings', [ContactSettingController::class, 'index'])->name('contact.settings');
+    Route::post('contact-settings', [ContactSettingController::class, 'store']);
 
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');
 

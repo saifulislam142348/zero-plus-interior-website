@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'boxicons/css/boxicons.min.css'
 import '../css/app.css';
 import '@/assets/scss/style.scss'
+import mixins from "@/mixins";
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
@@ -31,6 +32,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
+            .mixin(mixins)
             .mount(el);
     },
     progress: {
