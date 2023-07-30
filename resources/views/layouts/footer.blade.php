@@ -89,7 +89,7 @@
                                 @foreach($categoriesData as $category)
                                     <li>
                                         <span><i class="bx bx-chevron-right"></i></span>
-                                        <a href="{{ route('page.projects') }}">{{ $category->name }}</a>
+                                        <a href="{{ route('page.projects.category', $category->ref) }}">{{ $category->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>

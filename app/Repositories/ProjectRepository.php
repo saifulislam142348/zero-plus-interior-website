@@ -22,7 +22,17 @@ class ProjectRepository extends Repository
             ->select('id', 'ref', 'title', 'category_id', 'thumbnail_id')
             ->with('category:id,ref,name', 'thumbnail')
             ->latest()
-            ->take(30)
+            ->take(50)
+            ->get();
+    }
+
+    public function getProjectByCategoryRef($categoryId)
+    {
+        return $this->query()
+            ->select('id', 'ref', 'title', 'category_id', 'thumbnail_id')
+            ->with('category:id,ref,name', 'thumbnail')
+            ->where('category_id', $categoryId)
+            ->latest()
             ->get();
     }
 
