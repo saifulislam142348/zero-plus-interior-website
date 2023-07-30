@@ -582,7 +582,7 @@ a {
     top: 50%;
     left: 40px;
     width: 350px;
-    height: 510px;
+    height: auto;
     background: var(--white-color);
     box-shadow: 0 5px 20px -3px #00000026;
     transform: translate(0, -50%);

@@ -28,7 +28,7 @@
                                 <img src="{{ $service->photo->src }}" alt="">
                                 <div class="service-caption">
                                     <p>{{ $service->title }}</p>
-                                    <a href="">Read more</a>
+                                    <a href="{{ route('page.services') }}">Read more</a>
                                 </div>
                             </div>
                         </div>
