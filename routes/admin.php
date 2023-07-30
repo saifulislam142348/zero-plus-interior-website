@@ -97,10 +97,6 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::prefix('contacts')->group(function () {
         Route::get('/', [ContactController::class, 'index'])->name('contact.index');
-        Route::get('/create', [ContactController::class, 'create'])->name('contact.create');
-        Route::post('/create', [ContactController::class, 'store']);
-        Route::get('/{contact_id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
-        Route::put('/{contact_id}/edit', [ContactController::class, 'update']);
         Route::delete('/{contactId}', [ContactController::class, 'destroy'])->name('contact.delete');
     });
 
