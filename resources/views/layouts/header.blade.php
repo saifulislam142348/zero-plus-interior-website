@@ -1,4 +1,4 @@
-<header class="header-area" id="headerArea">
+<header class="header-area {{ Route::currentRouteName() === 'home' ? 'has-sticky-header' : '' }}" id="headerArea">
     <div class="header">
         <div class="container">
             <div class="row">

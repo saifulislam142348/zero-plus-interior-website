@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/boxicons/css/boxicons.min.css') }}">
     @stack('header-styles')
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    @stack('header-script')
 </head>
 <body>
     @include('layouts.header')

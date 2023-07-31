@@ -131,7 +131,9 @@ a {
     z-index: 999;
 }
 
-.header-area.sticky-header {
+.header-area.sticky-header,
+.header-area.has-sticky-header
+{
     position: fixed;
     width: 100%;
     background: var(--white-color);
@@ -151,7 +153,8 @@ a {
 .header .logo a{
     color: var(--white-color);
 }
-.header-area.sticky-header .header .logo a{
+.header-area.sticky-header .header .logo a,
+.header-area.has-sticky-header .header .logo a{
     color: var(--primary-color);
 }
 
@@ -174,7 +177,8 @@ a {
     display: block;
 }
 
-.header-area.sticky-header .menus ul li a {
+.header-area.sticky-header .menus ul li a,
+.header-area.has-sticky-header .menus ul li a {
     color: var(--dark-color)
 }
 
@@ -191,11 +195,13 @@ a {
     color: var(--white-color);
 }
 
-.header-area.sticky-header .menus ul li a:hover {
+.header-area.sticky-header .menus ul li a:hover,
+.header-area.has-sticky-header .menus ul li a:hover {
     color: var(--primary-color)
 }
 
-.header-area.sticky-header .menus ul li.has-btn:hover a {
+.header-area.sticky-header .menus ul li.has-btn:hover a ,
+.header-area.has-sticky-header .menus ul li.has-btn:hover a {
     color: var(--white-color);
 }
 
@@ -884,4 +890,45 @@ a {
     font-weight: 300;
     text-transform: capitalize;
     margin-right: 15px;
+}
+
+.project-sliders #slider .slides {
+    height: 480px !important;
+}
+
+.project-sliders #slider .slides li{
+    height: 100% !important;
+}
+
+.project-sliders #slider .slides li img{
+    height: 100% !important;
+}
+
+.project-sliders #carousel .slides {
+    height: 100px !important;
+}
+
+.project-sliders #carousel .slides li{
+    height: 100% !important;
+}
+
+.project-sliders #carousel .slides li img{
+    height: 100% !important;
+}
+
+.project-details-sidebar {
+    width: 100%;
+    box-shadow: 0 5px 10px -5px #00000056;
+    padding: 15px;
+}
+
+.project-details-sidebar .items .item {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--gray-light-color);
+}
+.project-details-sidebar .items .item strong {
+    font-weight: 500;
 }

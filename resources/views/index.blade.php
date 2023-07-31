@@ -2,7 +2,22 @@
 
 @section('content')
 
-    @include('components.hero');
+    <div class="container" style="padding-top: 120px;">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="grid">
+                    @foreach($projects as $project)
+                        <div class="grid-item {{ $project->category?->ref }}">
+                            <a href="{{ route('page.projects.show', $project->ref) }}">
+                                <img src="{{ $project->thumbnail->src }}" alt="">
+                                <div class="caption">{{ $project->title }}</div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
 
     @include('components.about-content')
 
