@@ -13,37 +13,45 @@
                                 @endif
                             </div>
                             <p>{{ $siteSettingsData->footer_summary ?? null }}</p>
-                            @if(false)
-                                <div class="social-links">
-                                    <ul>
+                            <div class="social-links">
+                                <ul>
+                                    @if($siteSettingsData->facebook)
                                         <li>
-                                            <a href="#">
-                                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                                            <a href="{{ $siteSettingsData->facebook }}">
+                                                <img src="{{ asset('assets/images/social-links/facebook.png') }}" alt="">
                                             </a>
                                         </li>
+                                    @endif
+                                    @if($siteSettingsData->twitter)
                                         <li>
-                                            <a href="#">
-                                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                                            <a href="{{ $siteSettingsData->twitter }}">
+                                                <img src="{{ asset('assets/images/social-links/twitter.png') }}" alt="">
                                             </a>
                                         </li>
+                                    @endif
+                                    @if($siteSettingsData->instagram)
                                         <li>
-                                            <a href="#">
-                                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                                            <a href="{{ $siteSettingsData->instagram }}">
+                                                <img src="{{ asset('assets/images/social-links/instagram.png') }}" alt="">
                                             </a>
                                         </li>
+                                    @endif
+                                    @if($siteSettingsData->youtube)
                                         <li>
-                                            <a href="#">
-                                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                                            <a href="{{ $siteSettingsData->youtube }}">
+                                                <img src="{{ asset('assets/images/social-links/youtube.png') }}" alt="">
                                             </a>
                                         </li>
+                                    @endif
+                                    @if($siteSettingsData->linkedin)
                                         <li>
-                                            <a href="#">
-                                                <img src="{{ asset('assets/images/facebook.png') }}" alt="">
+                                            <a href="{{ $siteSettingsData->linkedin }}">
+                                                <img src="{{ asset('assets/images/social-links/linkedin.png') }}" alt="">
                                             </a>
                                         </li>
-                                    </ul>
-                                </div>
-                            @endif
+                                    @endif
+                                </ul>
+                            </div>
                         </div>
                     </div>
 

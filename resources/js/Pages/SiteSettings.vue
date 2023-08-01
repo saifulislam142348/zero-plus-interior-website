@@ -60,6 +60,11 @@ const form = useForm({
     site_title: props.settings ? props.settings.site_title : '',
     footer_summary:  props.settings ? props.settings.footer_summary : '',
     copyright_text:  props.settings ? props.settings.copyright_text : '',
+    facebook:  props.settings ? props.settings.facebook : '',
+    twitter:  props.settings ? props.settings.twitter : '',
+    youtube:  props.settings ? props.settings.youtube : '',
+    linkedin:  props.settings ? props.settings.linkedin : '',
+    instagram:  props.settings ? props.settings.instagram : '',
     logo: '',
     favicon: '',
     footer_logo: '',
@@ -161,6 +166,49 @@ const submitSettings = () => {
                                 <div class="col-sm-8">
                                     <textarea class="form-control form-control-textarea" v-model="form.footer_summary" placeholder="write...."></textarea>
                                     <InputError class="mt-1" :message="form.errors.footer_summary" />
+                                </div>
+                            </div>
+
+                            <h5 class="mb-4 mt-2 font-medium">Social links:
+                                <hr>
+                            </h5>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-form-label">Facebook</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="enter facebook link" v-model="form.facebook">
+                                    <InputError class="mt-1" :message="form.errors.facebook" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-form-label">Twitter</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="enter twitter link" v-model="form.twitter">
+                                    <InputError class="mt-1" :message="form.errors.twitter" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-form-label">Youtube</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="enter youtube link" v-model="form.youtube">
+                                    <InputError class="mt-1" :message="form.errors.youtube" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-form-label">Linkedin</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="enter linkedin link" v-model="form.linkedin">
+                                    <InputError class="mt-1" :message="form.errors.linkedin" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-form-label">Instagram</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="enter instagram link" v-model="form.instagram">
+                                    <InputError class="mt-1" :message="form.errors.instagram" />
                                 </div>
                             </div>
 

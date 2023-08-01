@@ -16,7 +16,12 @@ class SiteSetting extends Model
         'favicon',
         'footer_logo',
         'footer_summary',
-        'copyright_text'
+        'copyright_text',
+        'facebook',
+        'twitter',
+        'youtube',
+        'linkedin',
+        'instagram',
     ];
 
     public function siteLogo()

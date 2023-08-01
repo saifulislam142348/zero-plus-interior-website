@@ -36,6 +36,11 @@ class SiteSettingRepository extends Repository
                 'site_title' => $request->input('site_title', null),
                 'footer_summary' => $request->input('footer_summary', null),
                 'copyright_text' => $request->input('copyright_text', null),
+                'facebook' => $request->input('facebook', null),
+                'twitter' => $request->input('twitter', null),
+                'youtube' => $request->input('youtube', null),
+                'linkedin' => $request->input('linkedin', null),
+                'instagram' => $request->input('instagram', null),
             ]);
         }
 
@@ -43,6 +48,11 @@ class SiteSettingRepository extends Repository
             'site_title' => $request->input('site_title', null),
             'footer_summary' => $request->input('footer_summary', null),
             'copyright_text' => $request->input('copyright_text', null),
+            'facebook' => $request->input('facebook', null),
+            'twitter' => $request->input('twitter', null),
+            'youtube' => $request->input('youtube', null),
+            'linkedin' => $request->input('linkedin', null),
+            'instagram' => $request->input('instagram', null),
         ]);
 
         return $settings->refresh();

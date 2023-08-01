@@ -846,22 +846,26 @@ a {
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(calc(33.33%), 1fr));
-}
+     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 10px;
+ }
 
 .grid-item {
     position: relative;
-    overflow: hidden;
     height: 275px;
+    width: calc(33.33%);
 }
 
 .grid-item img {
-    object-fit: cover;
-    margin: 5px;
     height: 100%;
     width: 100%;
     transition: var(--transition-medium);
+    padding: 5px;
 }
 
 .grid-item img:hover {
