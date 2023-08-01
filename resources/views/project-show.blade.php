@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="page-title">
-                        <h3>Guilty Restaurant is Bangkok’s first outpost restaurant by Olivier de Costa</h3>
+                        <h3>{{ $project->title }}</h3>
                     </div>
                 </div>
             </div>
