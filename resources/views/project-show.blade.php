@@ -42,7 +42,7 @@
                     </div>
                     <div class="project-details mt-4">
                         <h3 class="mb-4">Project Overview</h3>
-                        <p>{{ $project->description }}</p>
+                        <p>{!! $project->description !!}</p>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -51,7 +51,7 @@
                         <div class="items mt-4">
                             <div class="item">
                                 <strong>Owner:</strong>
-                                <span>{{ $project->client?->name }}</span>
+                                <span>{{ $project->customer?->name }}</span>
                             </div>
                             <div class="item">
                                 <strong>Category:</strong>
@@ -62,7 +62,7 @@
                                 <span>{{ $project->location }}</span>
                             </div>
                             <div class="item">
-                                <strong>Dated:</strong>
+                                <strong>Date:</strong>
                                 <span>{{ $project->end_date ?? $project->created_at }}</span>
                             </div>
                         </div>
