@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Visitor;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ContactSettingRepository;
 use App\Repositories\SiteSettingRepository;
@@ -42,14 +43,17 @@ class DataServiceProvider extends ServiceProvider
             $siteSettingsData = $this->settingRepository->getSettings();
             $contactSettingsData = $this->contactSettingRepository->first();
             $categoriesData = $this->categoryRepository->query()->get();
+            $visitorCount = Visitor::find(1);
 
             view()->share('siteSettingsData', $siteSettingsData);
             view()->share('contactSettingsData', $contactSettingsData);
             view()->share('categoriesData', $categoriesData);
+            view()->share('visitorsCount', $visitorCount);
         } else {
             view()->share('siteSettingsData', null);
             view()->share('contactSettingsData', null);
             view()->share('categoriesData', null);
+            view()->share('visitorsCount', 0);
         }
     }
 }

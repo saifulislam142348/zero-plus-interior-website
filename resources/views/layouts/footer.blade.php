@@ -52,6 +52,9 @@
                                     @endif
                                 </ul>
                             </div>
+                            <div class="mt-4">
+                                <span class="text-light">Visitors: {{ $visitorsCount->count ?? 0 }}</span>
+                            </div>
                         </div>
                     </div>
 
