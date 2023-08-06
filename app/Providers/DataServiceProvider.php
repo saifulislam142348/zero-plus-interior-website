@@ -34,7 +34,8 @@ class DataServiceProvider extends ServiceProvider
         if (
             Schema::hasTable('site_settings') &&
             Schema::hasTable('contact_settings') &&
-            Schema::hasTable('categories')
+            Schema::hasTable('categories') &&
+            Schema::hasTable('visitors')
         ) {
             $this->settingRepository = app(SiteSettingRepository::class);
             $this->contactSettingRepository = app(ContactSettingRepository::class);
